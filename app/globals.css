@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #07070D;
+  --surface: #0F0F1A;
+  --surface-subtle: #141424;
+  --surface-hover: #18182E;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.15);
+  --brand-violet: #7C3AED;
+  --brand-cyan: #06B6D4;
+  --brand-red: #FF2D55;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #07070D;
+  color: #F3F4F6;
+}
+
+body {
+  background-color: #07070D;
+  color: #F3F4F6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Glassmorphism Surface Utilities */
+.glass-panel {
+  background: rgba(15, 15, 26, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-elevated {
+  background: rgba(20, 20, 36, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-nav {
+  background: rgba(7, 7, 13, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Gradient Borders */
+.gradient-border-pro {
+  position: relative;
+  background: #0F0F1A;
+  border-radius: 1rem;
+}
+
+.gradient-border-pro::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(1rem + 1px);
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.6), rgba(6, 182, 212, 0.5), rgba(255, 45, 85, 0.4));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Glow effects */
+.glow-hover:hover {
+  box-shadow: 0 0 25px -4px rgba(124, 58, 237, 0.4);
+}
+
+.glow-cyan-hover:hover {
+  box-shadow: 0 0 25px -4px rgba(6, 182, 212, 0.4);
+}
+
+/* Grid & Dots Background Patterns */
+.bg-grid-pattern {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+.bg-radial-gradient-hero {
+  background: radial-gradient(circle at 50% 15%, rgba(124, 58, 237, 0.18) 0%, rgba(6, 182, 212, 0.08) 35%, transparent 70%);
+}
+
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07070D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1A1A2E;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #252542;
+}
+
+/* Markdown styling inside output */
+.prose-dark {
+  color: #D1D5DB;
+}
+
+.prose-dark h1,
+.prose-dark h2,
+.prose-dark h3,
+.prose-dark h4 {
+  color: #F9FAFB;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-dark h1 { font-size: 1.5rem; }
+.prose-dark h2 { font-size: 1.3rem; }
+.prose-dark h3 { font-size: 1.15rem; }
+.prose-dark h4 { font-size: 1rem; }
+
+.prose-dark p {
+  margin-bottom: 0.85rem;
+  line-height: 1.7;
+}
+
+.prose-dark ul, .prose-dark ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-dark li {
+  margin-bottom: 0.4rem;
+  line-height: 1.6;
+}
+
+.prose-dark strong {
+  color: #FFFFFF;
+}
+
+.prose-dark code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.35rem;
+  font-size: 0.875em;
+  color: #38BDF8;
+}
+
+.prose-dark pre {
+  background: #090913;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.prose-dark pre code {
+  background: transparent;
+  padding: 0;
+  color: #E2E8F0;
+}
+
+.prose-dark blockquote {
+  border-left: 3px solid #7C3AED;
+  padding-left: 1rem;
+  color: #9CA3AF;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+.prose-dark hr {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 1.5rem 0;
+}
