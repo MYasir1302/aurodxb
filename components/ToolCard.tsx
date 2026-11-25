@@ -2,10 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import { Lock, ArrowUpRight, Crown, Sparkles } from "lucide-react";
+import { ArrowUpRight, Crown, Sparkles, Clock } from "lucide-react";
 import { ToolDefinition } from "@/lib/types";
 import { DynamicIcon } from "./DynamicIcon";
-import { useUser } from "./UserContext";
 import { cn } from "@/lib/utils";
 
 interface ToolCardProps {
@@ -13,20 +12,9 @@ interface ToolCardProps {
 }
 
 export function ToolCard({ tool }: ToolCardProps) {
-  const { isPro, openUpgradeModal } = useUser();
-  const isLocked = tool.isPro && !isPro;
-
-  const handleClick = (e: React.MouseEvent) => {
-    if (isLocked) {
-      e.preventDefault();
-      openUpgradeModal();
-    }
-  };
-
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      onClick={handleClick}
       className={cn(
         "group relative flex flex-col justify-between overflow-hidden rounded-2xl border p-6 transition-all duration-300",
         tool.isPro
@@ -62,7 +50,7 @@ export function ToolCard({ tool }: ToolCardProps) {
             {tool.isPro ? (
               <span className="inline-flex items-center space-x-1 rounded-full border border-violet-500/30 bg-violet-500/10 px-2.5 py-0.5 text-xs font-semibold text-violet-300">
                 <Crown className="w-3 h-3 text-yellow-400" />
-                <span>PRO</span>
+                <span>PRO (Coming Soon)</span>
               </span>
             ) : (
               <span className="inline-flex items-center space-x-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-0.5 text-xs font-semibold text-cyan-300">
@@ -91,10 +79,10 @@ export function ToolCard({ tool }: ToolCardProps) {
           {tool.category}
         </span>
 
-        {isLocked ? (
+        {tool.isPro ? (
           <div className="flex items-center space-x-1 text-violet-400 font-medium">
-            <Lock className="w-3.5 h-3.5" />
-            <span>Unlock Pro</span>
+            <Clock className="w-3.5 h-3.5" />
+            <span>Preview Sample &rarr;</span>
           </div>
         ) : (
           <span className="text-gray-400 group-hover:text-white transition-colors">

@@ -52,13 +52,13 @@ export default function ToolsDirectoryPage() {
         <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center space-x-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-semibold text-violet-300 mb-3">
             <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-            <span>16 AI YouTube Tools</span>
+            <span>9 Free Tools • 7 Pro Tools (Coming Soon)</span>
           </div>
           <h1 className="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
             Explore Creator Tools
           </h1>
           <p className="mt-3 text-sm sm:text-base text-gray-400">
-            From high-CTR titles and tag optimization to full video scripts and channel audits. Filter by capability or search directly.
+            Use any of our 9 free tools immediately with no login, or explore sample previews for upcoming Pro features.
           </p>
         </div>
 
@@ -120,7 +120,7 @@ export default function ToolsDirectoryPage() {
                 )}
               >
                 <Crown className="w-3 h-3 text-yellow-400" />
-                <span>Pro ({proCount})</span>
+                <span>Pro (Soon) ({proCount})</span>
               </button>
             </div>
           </div>

@@ -39,11 +39,10 @@ export function WaitlistModal() {
 
       setSuccess(true);
 
-      // Trigger Confetti Celebration
       try {
         confetti({
-          particleCount: 80,
-          spread: 70,
+          particleCount: 70,
+          spread: 60,
           origin: { y: 0.6 },
           colors: ["#7C3AED", "#06B6D4", "#FF2D55", "#FFFFFF"],
         });
@@ -99,19 +98,19 @@ export function WaitlistModal() {
             <div>
               <div className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-cyan-400 mb-2">
                 <Sparkles className="w-4 h-4" />
-                <span>Priority Access</span>
+                <span>Coming Soon</span>
               </div>
               <h3 className="font-heading text-2xl font-bold text-white mb-2">
                 Join the {waitlistPlan} Waitlist
               </h3>
               <p className="text-sm text-gray-400 mb-6">
-                We are gradually expanding server capacity to ensure lightning-fast generation speeds. Be the first to get access with an exclusive early-bird 40% discount.
+                Pro creator tools are launching soon. Enter your email address to be notified the moment access opens.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                    Your YouTube / Creator Email
+                    Your Email Address
                   </label>
                   <div className="relative">
                     <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
@@ -140,11 +139,11 @@ export function WaitlistModal() {
                   {loading ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Securing Your Spot...</span>
+                      <span>Saving your spot...</span>
                     </>
                   ) : (
                     <>
-                      <span>Lock In Early-Bird Access</span>
+                      <span>Join Pro Waitlist</span>
                       <ArrowRight className="w-4 h-4" />
                     </>
                   )}
@@ -152,7 +151,7 @@ export function WaitlistModal() {
               </form>
 
               <p className="mt-4 text-center text-xs text-gray-500">
-                Zero spam. You can unsubscribe anytime with one click.
+                No spam. We will only email you regarding Pro launch updates.
               </p>
             </div>
           ) : (
@@ -161,16 +160,16 @@ export function WaitlistModal() {
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <h3 className="font-heading text-2xl font-bold text-white mb-2">
-                You're on the VIP list!
+                You&apos;re on the list!
               </h3>
               <p className="text-sm text-gray-300 mb-6">
-                We've reserved your early-adopter slot for <span className="text-white font-medium">{email}</span>. Look out for our welcome message with free YouTube growth templates.
+                We&apos;ll notify <span className="text-white font-medium">{email}</span> as soon as Pro creator tools are live.
               </p>
               <button
                 onClick={handleClose}
                 className="w-full rounded-xl bg-white/10 py-3 px-4 text-sm font-medium text-white hover:bg-white/20 transition-all"
               >
-                Back to Tools
+                Continue to Free Tools
               </button>
             </div>
           )}

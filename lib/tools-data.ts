@@ -1,5 +1,7 @@
 import { ToolDefinition } from "./types";
 
+const currentYear = new Date().getFullYear();
+
 export const TOOLS: ToolDefinition[] = [
   // --- FREE TOOLS ---
   {
@@ -35,41 +37,39 @@ export const TOOLS: ToolDefinition[] = [
         id: "keyword",
         label: "Target SEO Keyword (Optional)",
         type: "text",
-        placeholder: "e.g., learn coding 2025",
+        placeholder: `e.g., learn coding ${currentYear}`,
         helpText: "Helps anchor titles for YouTube search traffic as well as browse recommendations.",
       },
     ],
-    sampleOutput: `### 🔥 Top 10 High-CTR Titles
+    sampleOutput: `1. How to Learn to Code from Scratch
+Clear, realistic roadmap designed for complete beginners.
 
-1. **I Learned to Code in 6 Months (Here's What Nobody Tells You)**
-   *CTR Angle: Revealing unspoken truths & personal authority*
+2. Stop Learning to Code Like This
+Highlights common beginner pitfalls that waste valuable study time.
 
-2. **How to Learn Coding from ZERO in 2025 (The Realistic Roadmap)**
-   *CTR Angle: Fresh year relevance + grounded expectations*
+3. The Coding Roadmap I Wish I Had
+Shares helpful hindsight to streamline the self-taught learning journey.
 
-3. **Stop Learning to Code Like This (5 Costly Mistakes)**
-   *CTR Angle: Negative hook / fear of wasted time*
+4. 3 Tools That Make Learning Code Easier
+Focuses on simple, actionable recommendations for new developers.
 
-4. **From Zero to Junior Developer in 180 Days — My Exact Strategy**
-   *CTR Angle: Specific timeframe + tangible outcome*
+5. What It Really Takes to Learn Coding
+Grounded overview addressing common beginner questions and challenges.
 
-5. **Why 90% of Self-Taught Programmers Quit (And How Not To)**
-   *CTR Angle: High-stakes statistic triggering curiosity*
+6. The Daily Routine for Self-Taught Coders
+Practical scheduling advice for building consistent daily coding habits.
 
-6. **The Only 3 Tools You Need to Learn Coding Fast**
-   *CTR Angle: Simplification & actionable minimalist hook*
+7. Which Programming Language Should You Start With?
+Direct guide helping beginners choose their first language logically.
 
-7. **I Tried 10 Coding Courses So You Don’t Have To**
-   *CTR Angle: Vicarious effort / high viewer utility*
+8. How to Build Your First Web App Fast
+Action-oriented project guide to keep learner momentum high.
 
-8. **If I Had to Relearn Coding in 2025, I’d Do This**
-   *CTR Angle: Regret & hindsight wisdom*
+9. Why Most Self-Taught Coders Struggle
+Identifies key study roadblocks and how to push through them.
 
-9. **Can You REALLY Get a Dev Job in 6 Months? (Honest Truth)**
-   *CTR Angle: Direct question addressing common skepticism*
-
-10. **The 2-Hour Daily Routine That Got Me Hired as a Coder**
-    *CTR Angle: Accessible daily commitment with proof*`,
+10. The Realistic Path to a Junior Developer Role
+Honest milestone breakdown from first line of code to portfolio.`,
   },
 
   {
@@ -85,64 +85,54 @@ export const TOOLS: ToolDefinition[] = [
         id: "title",
         label: "Video Title / Main Topic",
         type: "text",
-        placeholder: "e.g., Ultimate Productivity Setup for Notion in 2025",
+        placeholder: "e.g., Ultimate Productivity Setup for Notion",
         required: true,
       },
       {
         id: "keyPoints",
-        label: "Key Points Covered (or bullet points)",
+        label: "Key Topics Covered (or bullet points)",
         type: "textarea",
-        placeholder: "e.g.,\n- Dashboard layout\n- Automated task manager\n- Habit tracker widget\n- Free template download link",
+        placeholder: "e.g.,\n- Dashboard layout\n- Automated task manager\n- Habit tracker widget\n- Template walkthrough",
         required: true,
       },
       {
         id: "cta",
         label: "Primary Call to Action",
         type: "select",
-        defaultValue: "Subscribe + Download Free Resource",
+        defaultValue: "Subscribe + Check Resources",
         options: [
-          { label: "Subscribe + Download Free Resource", value: "Subscribe + Download Free Resource" },
+          { label: "Subscribe + Check Resources", value: "Subscribe + Check Resources" },
           { label: "Join Newsletter / Community", value: "Join Newsletter" },
-          { label: "Buy Product / Course", value: "Buy Product" },
-          { label: "Comment and Share Your Thoughts", value: "Comment Discussion" },
+          { label: "Check Out Project Links", value: "Check Out Project Links" },
+          { label: "Comment and Share Thoughts", value: "Comment Discussion" },
         ],
       },
       {
         id: "socialLinks",
         label: "Socials / External Links (Optional)",
         type: "text",
-        placeholder: "e.g., Twitter: @handle | Discord: /invite",
+        placeholder: "e.g., Twitter: @handle | Website: yoursite.com",
       },
     ],
-    sampleOutput: `In this video, I walk you through the ultimate Notion productivity setup designed to streamline your workflow and keep you focused in 2025. Whether you're managing complex projects or everyday tasks, this system gives you full clarity without the overwhelm.
+    sampleOutput: `In this video, we break down an efficient Notion workspace designed to keep daily projects organized without unnecessary complexity. From simple task boards to habit tracking, this system keeps your schedule clear.
 
-👉 **Grab the FREE Notion Template here:** [LINK_HERE]
+TIMESTAMPS:
+00:00 - Introduction & Workspace Overview
+01:30 - Core Dashboard Structure
+04:15 - Task & Project Management
+07:20 - Habit Tracking Setup
+09:45 - Mobile Optimization Tips
+11:10 - Summary & Next Steps
 
----
+RESOURCES & LINKS:
+• Template Link: [Add your template link here]
+• Website: [Your website link]
 
-⏱️ **TIMESTAMPS:**
-00:00 - The Problem with Most Productivity Systems
-01:15 - Overview of the Core Dashboard
-03:40 - The Automated Task Engine
-06:12 - Habit Tracking That Actually Works
-08:45 - Mobile Optimization Tips
-10:30 - How to Get the Free Template
-11:15 - Final Thoughts & Community Challenge
+CONNECT:
+• Twitter / X: @YourHandle
+• YouTube: Subscribe for weekly workflow tutorials
 
----
-
-🔔 **SUBSCRIBE FOR MORE PRODUCTIVITY GUIDES:**
-If you found this useful, hit the Like button and subscribe for weekly workflow tutorials:
-https://youtube.com/@YourChannel?sub_confirmation=1
-
-🌐 **CONNECT WITH ME:**
-• Twitter / X: https://x.com/yourhandle
-• Free Newsletter: https://yourdomain.com/newsletter
-• Join the Discord: https://discord.gg/yourserver
-
----
-
-#Notion #Productivity #NotionTemplate #TimeManagement #Workflow`,
+#Notion #Productivity #Organization #TimeManagement #Workflow`,
   },
 
   {
@@ -158,7 +148,7 @@ https://youtube.com/@YourChannel?sub_confirmation=1
         id: "topic",
         label: "Video Topic or Title",
         type: "text",
-        placeholder: "e.g., Best Budget Camera for YouTube Beginners 2025",
+        placeholder: "e.g., Best Budget Camera for YouTube Beginners",
         required: true,
       },
       {
@@ -168,16 +158,7 @@ https://youtube.com/@YourChannel?sub_confirmation=1
         placeholder: "e.g., budget youtube camera",
       },
     ],
-    sampleOutput: `### 🏷️ Recommended Tags (Copy-Ready)
-
-\`\`\`text
-budget youtube camera, best budget camera for youtube, youtube camera for beginners, camera for youtube 2025, cheap camera for video, budget 4k camera, beginner youtube equipment, cheap vlogging camera, youtube gear guide, sony zv e10 review, canon r50 youtube, budget creator setup, how to start youtube with low budget, best video camera under 500, beginner camera guide
-\`\`\`
-
-#### 📊 Keyword Breakdown by Search Intent:
-- **Broad Traffic:** \`budget youtube camera\`, \`camera for youtube 2025\`, \`youtube gear\`
-- **High Buyer Intent:** \`sony zv e10 review\`, \`canon r50 youtube\`, \`best video camera under 500\`
-- **Long-tail Discovery:** \`how to start youtube with low budget\`, \`best budget camera for youtube beginners\``,
+    sampleOutput: `budget youtube camera, best camera for youtube, beginner youtube camera, cheap video camera, budget 4k camera, beginner youtube gear, cheap vlogging camera, youtube gear guide, beginner camera setup, budget creator setup, how to start youtube on a budget, video camera guide, camera for video beginners`,
   },
 
   {
@@ -193,7 +174,7 @@ budget youtube camera, best budget camera for youtube, youtube camera for beginn
         id: "topic",
         label: "Video Topic / Niche",
         type: "text",
-        placeholder: "e.g., Personal Finance, AI tools, Fitness workout",
+        placeholder: "e.g., Personal Finance, Web Development, Fitness",
         required: true,
       },
       {
@@ -202,27 +183,13 @@ budget youtube camera, best budget camera for youtube, youtube camera for beginn
         type: "select",
         defaultValue: "YouTube Shorts",
         options: [
-          { label: "YouTube Shorts (High Viral Reach)", value: "Shorts" },
+          { label: "YouTube Shorts", value: "Shorts" },
           { label: "Long-Form Video", value: "Long-Form" },
-          { label: "Live Stream / Podcast", value: "Live Stream" },
+          { label: "Podcast / Discussion", value: "Podcast" },
         ],
       },
     ],
-    sampleOutput: `### 🚀 Top Recommended Hashtags
-
-#### **Primary High-Reach (Use 3-5 in Title / Top of Description):**
-\`#Shorts #PersonalFinance #MoneyTips #FinancialFreedom #WealthBuilding\`
-
-#### **Niche Discovery (Boosts Recommendation Algorithm):**
-\`#PassiveIncome #BudgetingTips #SmartInvesting #FinanceHacks #SideHustle2025\`
-
-#### **Trending Engagement Tags:**
-\`#CreatorEconomy #LearnOnYouTube #MoneyTok #InvestingForBeginners\`
-
-📋 **Ready to Paste Block:**
-\`\`\`text
-#Shorts #PersonalFinance #MoneyTips #FinancialFreedom #PassiveIncome #SmartInvesting #Budgeting101
-\`\`\``,
+    sampleOutput: `#Shorts #PersonalFinance #MoneyTips #Budgeting #InvestingTips #FinancialHabits #SaveMoney #WealthBuilding #LearnOnYouTube`,
   },
 
   {
@@ -238,14 +205,14 @@ budget youtube camera, best budget camera for youtube, youtube camera for beginn
         id: "niche",
         label: "Your Niche / Industry",
         type: "text",
-        placeholder: "e.g., Tech Reviews, Fitness for busy professionals, Solo travel",
+        placeholder: "e.g., Home fitness, Web development, Coffee brewing",
         required: true,
       },
       {
         id: "audience",
         label: "Target Audience",
         type: "text",
-        placeholder: "e.g., College students, 9-to-5 workers, beginner hobbyists",
+        placeholder: "e.g., Busy professionals, College students, Beginners",
       },
       {
         id: "style",
@@ -257,57 +224,69 @@ budget youtube camera, best budget camera for youtube, youtube camera for beginn
           { label: "Entertainment & Challenge", value: "Entertainment" },
           { label: "Storytelling & Documentary", value: "Documentary" },
           { label: "Opinion & Commentary", value: "Commentary" },
-          { label: "Day in the Life / Vlog", value: "Vlog" },
+          { label: "Vlog / Day in Life", value: "Vlog" },
         ],
       },
     ],
-    sampleOutput: `### 💡 15 High-Potential Video Concepts
+    sampleOutput: `1. The 15-Minute Home Workout That Works
+Hook: Why consistency beats 2-hour gym sessions.
+Visual: Split screen comparing a simple circuit with an overcrowded gym.
 
-1. **"The 15-Minute Workout That Actually Burns Fat (Backed by Science)"**
-   * *Hook:* Debunking the myth that you need 2 hours in the gym.
-   * *Visual Idea:* Split screen of intense 15-min circuit vs boring cardio treadmill.
+2. Testing 3 Popular Fitness Gadgets
+Hook: Do expensive fitness trackers actually improve your workouts?
+Visual: Close-up side-by-side comparison of 3 tracking devices.
 
-2. **"I Tried 5 Desk Workouts for 30 Days (My Posture Transformed)"**
-   * *Hook:* Before/after metrics + 30-day challenge format viewers love to binge.
+3. The Beginner's Guide to Weekly Meal Prep
+Hook: How to prep five healthy lunches in under ninety minutes.
+Visual: Organized glass containers laid out on a kitchen counter.
 
-3. **"The Busy Executive's Guide to Meal Prep (3 Hours = 7 Days of Meals)"**
-   * *Hook:* Addressing the #1 objection: "I don't have time to cook healthy."
+4. 5 Exercise Mistakes Slowing Down Progress
+Hook: The common posture errors that keep you from seeing results.
+Visual: Side profile graphic highlighting correct vs incorrect form.
 
-4. **"Why Your Fitness Tracker is Lying to You (Calorie Burn Test)"**
-   * *Hook:* Controversy & testing popular gadgets (Apple Watch vs Whoop).
+5. A Realistic Morning Routine for Busy People
+Hook: An accessible 20-minute morning routine that boosts daily energy.
+Visual: Clean sunrise time-lapse paired with simple stretching.
 
-5. **"Fix Your Lower Back Pain with This 4-Step Bedtime Routine"**
-   * *Hook:* Immediate search utility for chronic pain sufferers.
+6. Building a Home Gym on a Sensible Budget
+Hook: The only three pieces of equipment you need to train at home.
+Visual: Minimalist dumbbell and resistance band setup in a corner.
 
-6. **"Can You Get Shredded with Just Dumbbells at Home? (Full Test)"**
-   * *Hook:* Budget accessibility angle + self-experimentation.
+7. How Much Water Do You Actually Need Every Day?
+Hook: Debunking popular hydration myths with practical guidelines.
+Visual: Labeled water bottle alongside an easy daily milestone checklist.
 
-7. **"The Worst Fitness Advice on TikTok (Doctor & Trainer Reaction)"**
-   * *Hook:* Reaction commentary with credible expert analysis.
+8. The 10-Minute Desk Mobility Routine
+Hook: Simple stretches to relieve neck and lower-back tension at work.
+Visual: Office worker demonstrating subtle stretches at a standing desk.
 
-8. **"How to Eat Healthy at Airport & Hotel Buffets (Travel Fitness Guide)"**
-   * *Hook:* Solves an ultra-specific pain point for corporate travelers.
+9. Why Calorie Counting Fails Most Beginners
+Hook: Focus on nutrient density instead of obsessing over every number.
+Visual: Balanced whole-food plate contrasted with processed snack bar labels.
 
-9. **"I Stopped Drinking Coffee for 14 Days (Surprising Energy Results)"**
-   * *Hook:* Habit elimination experiment with relatable symptoms.
+10. How to Return to Exercise After a Long Break
+Hook: A gentle 2-week progression plan to rebuild movement habits safely.
+Visual: Calendar graphic marking small, achievable daily exercise blocks.
 
-10. **"The Minimalist Home Gym Under $100 (Tested & Ranked)"**
-    * *Hook:* Thrift / high-value gear tier list.
+11. The Science of Rest Days and Recovery
+Hook: Why muscles grow when you sleep, not when you lift.
+Visual: Sleep tracking chart paired with simple rest-day guidelines.
 
-11. **"5 Micro-Habits That Burn 500 Extra Calories Without Exercising"**
-    * *Hook:* NEAT (Non-Exercise Activity Thermogenesis) explained simply.
+12. 3 Low-Impact Cardio Exercises for Joint Health
+Hook: Get cardiovascular benefits without heavy impact on your knees.
+Visual: Demonstration of incline walking, rowing, and cycling.
 
-12. **"The 10-Minute Morning Mobility Sequence for Stiff Joints"**
-    * *Hook:* Low barrier to entry, daily repeatable viewer habit.
+13. How to Stay Consistent When Motivation Fades
+Hook: Replacing fleeting motivation with automatic friction-free systems.
+Visual: Workout clothes laid out next to shoes by the bed.
 
-13. **"What 10,000 Steps Actually Looks Like in a Busy Corporate Day"**
-    * *Hook:* Realistic documentation rather than unattainable perfection.
+14. Healthy Fast Meals for Late Work Nights
+Hook: Three wholesome 10-minute dinners when you are too tired to cook.
+Visual: One-pan skillet meal coming together in real time.
 
-14. **"I Hired a Celebrity Trainer for a Week (Here is What They Changed)"**
-    * *Hook:* Access to insider knowledge without paying celebrity rates.
-
-15. **"The Stress-Fat Connection: Why Working Harder Stops Weight Loss"**
-    * *Hook:* Validating viewer struggles with cortisol and sleep science.`,
+15. Tracking Fitness Progress Without the Scale
+Hook: Why body measurements, energy levels, and strength tell the real story.
+Visual: Tape measure and notebook next to running shoes.`,
   },
 
   {
@@ -323,45 +302,39 @@ budget youtube camera, best budget camera for youtube, youtube camera for beginn
         id: "topic",
         label: "Video Topic or Working Title",
         type: "text",
-        placeholder: "e.g., Why Apple cancelled the electric car project",
+        placeholder: "e.g., Why learning Python is simpler than you think",
         required: true,
       },
       {
         id: "angle",
-        label: "Primary Psychological Trigger",
+        label: "Primary Psychological Angle",
         type: "select",
-        defaultValue: "Shock & Curiosity",
+        defaultValue: "Curiosity & Clarity",
         options: [
-          { label: "Shock & Curiosity", value: "Shock & Curiosity" },
-          { label: "The Secret / Hidden Truth", value: "Secret & Truth" },
-          { label: "Urgency / Mistake Warning", value: "Urgent Warning" },
+          { label: "Curiosity & Clarity", value: "Curiosity & Clarity" },
+          { label: "Warning & Caution", value: "Warning & Caution" },
+          { label: "Bold Statement", value: "Bold Statement" },
           { label: "Before & After Transformation", value: "Transformation" },
-          { label: "Direct & Bold Claim", value: "Bold Claim" },
         ],
       },
     ],
-    sampleOutput: `### 🎨 High-CTR Thumbnail Text Concepts (2-4 Words)
+    sampleOutput: `CURIOSITY:
+- START HERE
+- THE REAL TRUTH
+- THIS CHANGES IT
+- HIDDEN STEP
 
-#### 🔴 High Contrast & Shock Hooks:
-1. **IT'S OVER.** *(Pairs well with cancelled logos / red X)*
-2. **THEY LIED?** *(High curiosity facial expression)*
-3. **$10B WASTED.** *(Quantifiable failure hook)*
-4. **NEVER AGAIN.** *(Definitive ending statement)*
+WARNING:
+- DON'T DO THIS
+- AVOID THIS TRAP
+- STOP NOW
+- BIG MISTAKE
 
-#### 🟡 Curiosity & Secret Angles:
-5. **SECRET REVEALED**
-6. **WHAT HAPPENED?**
-7. **BEHIND CLOSED DOORS**
-8. **THE REAL REASON**
-
-#### 🟢 Urgent Warnings:
-9. **DON’T BUY YET!**
-10. **HUGE MISTAKE**
-11. **TOO LATE?**
-12. **GAME OVER**
-
-💡 **Thumbnail Design Tip:**
-*Never duplicate the video title in your thumbnail text!* If your title is *"Why Apple Cancelled the Titan Car Project"*, your thumbnail text should be *"THEY GAVE UP?"* or *"$10,000,000,000 DOWN THE DRAIN"*. Keep font weight ultra-bold (Impact, Montserrat 900, Futura Bold) with drop shadow.`,
+BOLD STATEMENTS:
+- IT WORKS
+- NEW WAY
+- SO MUCH FASTER
+- ANYONE CAN`,
   },
 
   {
@@ -377,20 +350,19 @@ budget youtube camera, best budget camera for youtube, youtube camera for beginn
         id: "niche",
         label: "Channel Topic or Niche",
         type: "text",
-        placeholder: "e.g., AI tools, Coffee brewing, Indie game development",
+        placeholder: "e.g., Web development, Coffee brewing, Home woodworking",
         required: true,
       },
       {
         id: "style",
         label: "Name Aesthetic / Style",
         type: "select",
-        defaultValue: "Sleek & Modern",
+        defaultValue: "Modern & Clean",
         options: [
-          { label: "Sleek & Modern (Single/Compound word)", value: "Modern" },
-          { label: "Authority & Educational", value: "Authority" },
-          { label: "Playful & Creative", value: "Playful" },
-          { label: "Personal Brand (Name + Hook)", value: "Personal Brand" },
-          { label: "Minimalist & Short", value: "Minimalist" },
+          { label: "Modern & Clean", value: "Modern" },
+          { label: "Educational & Authority", value: "Authority" },
+          { label: "Creative & Playful", value: "Creative" },
+          { label: "Minimalist", value: "Minimalist" },
         ],
       },
       {
@@ -400,33 +372,29 @@ budget youtube camera, best budget camera for youtube, youtube camera for beginn
         placeholder: "e.g., Alex, Dave, Maya",
       },
     ],
-    sampleOutput: `### 🌟 Brandable Channel Name Ideas
+    sampleOutput: `MODERN:
+- CodeCraft Lab (@CodeCraftLab)
+- SyntaxForge (@SyntaxForge)
+- DevPulse HQ (@DevPulseHQ)
+- NextStack Media (@NextStackMedia)
 
-#### ⚡ Modern & Sleek:
-1. **Synthetix Lab** *(Handles: @SynthetixLab)*
-2. **NeuroCraft** *(Handles: @NeuroCraftHQ)*
-3. **PromptPulse** *(Handles: @PromptPulse)*
-4. **VektorAI** *(Handles: @VektorAI)*
+AUTHORITY:
+- The Developer Blueprint (@DeveloperBlueprint)
+- Applied Web Institute (@AppliedWebInstitute)
+- Full Stack Foundations (@FullStackFoundations)
+- Software Craftsmanship (@SoftwareCraftsmanship)
 
-#### 🎓 Authority & Masterclass:
-5. **The AI Blueprint**
-6. **Applied Intelligence**
-7. **Cognitive Edge**
-8. **NextGen Creator Academy**
+CREATIVE:
+- Byte & Pixel (@ByteAndPixel)
+- The Coffee Coder (@TheCoffeeCoder)
+- Terminal Tales (@TerminalTales)
+- Script & Screen (@ScriptAndScreen)
 
-#### 🎨 Playful & Catchy:
-9. **ByteBites AI**
-10. **The Silicon Cafe**
-11. **Robot & Quill**
-12. **FutureCrafted**
-
-#### 👤 Personal Hybrid:
-13. **Alex Explores AI**
-14. **Prompting with Alex**
-15. **Alex In The Loop**
-
-💡 **Availability Checklist:**
-Check availability on YouTube handle (\`@handle\`), X/Twitter, and \`.com\` domain before settling on your final branding!`,
+MINIMALIST:
+- DevBase (@DevBase)
+- CodeRoom (@CodeRoom)
+- DevLog (@DevLogHQ)
+- StackHQ (@StackHQ)`,
   },
 
   {
@@ -463,110 +431,109 @@ Check availability on YouTube handle (\`@handle\`), X/Twitter, and \`.com\` doma
         id: "comment",
         label: "Viewer's Comment",
         type: "textarea",
-        placeholder: "e.g., 'Loved this video! But how do you stay disciplined when you lack motivation?'",
+        placeholder: "e.g., 'Loved this video! How do you stay focused when working remotely?'",
         required: true,
       },
       {
         id: "tone",
         label: "Reply Tone",
         type: "select",
-        defaultValue: "Engaging & Community-Building",
+        defaultValue: "Engaging & Friendly",
         options: [
-          { label: "Engaging & Community-Building (Warm, thoughtful)", value: "Engaging" },
-          { label: "Witty & Humorous", value: "Witty" },
-          { label: "Short & Punchy (Heart-worthy)", value: "Short" },
-          { label: "Question-Prompting (Encourage reply threads)", value: "Question" },
-          { label: "Handling Criticism (Diplomatic & Graceful)", value: "Diplomatic" },
+          { label: "Engaging & Friendly", value: "Engaging" },
+          { label: "Short & Appreciative", value: "Short" },
+          { label: "Question-Prompting", value: "Question" },
+          { label: "Witty & Lighthearted", value: "Witty" },
+          { label: "Diplomatic / Helpful", value: "Diplomatic" },
         ],
       },
       {
         id: "creatorContext",
         label: "Context / Quick thought (Optional)",
         type: "text",
-        placeholder: "e.g., I rely on habits rather than motivation",
+        placeholder: "e.g., I block notifications in the morning",
       },
     ],
-    sampleOutput: `### 💬 5 Tailored Reply Options
+    sampleOutput: `1. Thoughtful & Insightful
+Thanks so much for watching! For me, having a dedicated work corner and leaving my phone in another room during morning focus blocks makes the biggest difference. Hope that helps!
 
-1. **Option 1 (Thoughtful & Insightful - Recommended):**
-   > "Thanks so much for watching! For me, motivation is a spark, but daily systems are the engine. On days I feel zero motivation, I commit to just 5 minutes — usually the momentum carries me through. Do you currently use a morning routine to kickstart the day?"
+2. Short & Friendly
+Really appreciate the kind words! Consistency and quiet morning blocks are my go-to.
 
-2. **Option 2 (Short & Heart-Worthy):**
-   > "Really appreciate the love! Systems over motivation every single time 🙌"
+3. Discussion-Starter
+Thank you! Setting strict morning boundaries was huge for me. What has been the toughest distraction for you when working from home?
 
-3. **Option 3 (Discussion-Starter):**
-   > "Great question! Honestly, I rely on friction reduction: laying out my workspace the night before so I don't have to 'think'. What's the biggest friction point in your routine right now?"
+4. Witty & Lighthearted
+A dedicated workspace, good noise-cancelling headphones, and way too much coffee!
 
-4. **Option 4 (Witty):**
-   > "My secret? Copious amounts of espresso and the impending fear of unfinished to-do lists ☕😅 But seriously, tiny habits win!"
-
-5. **Option 5 (Community Shoutout):**
-   > "Pinned this! Such an important topic. Going to cover my entire friction-elimination checklist in an upcoming video. Stay tuned!"`,
+5. Community Highlight
+Great question! Going to address home office focus setups in more detail in an upcoming community post. Thanks for tuning in!`,
   },
 
-  // --- PRO TOOLS ---
+  // --- PRO TOOLS (Sample Outputs Only - Forms Disabled in Preview) ---
   {
     slug: "video-script-writer",
     name: "Full Video Script Writer",
     description: "Complete end-to-end video script: retention-hook intro, body sections with pacing cues, retention tips, and outro.",
     category: "Scripting & Content",
     isPro: true,
-    badge: "Pro",
+    badge: "Pro (Coming Soon)",
     iconName: "Video",
     fields: [
       {
         id: "topic",
         label: "Video Title / Premise",
         type: "text",
-        placeholder: "e.g., The 2025 AI Revolution: Why Junior Jobs Are Disappearing",
-        required: true,
+        placeholder: "e.g., How to edit YouTube videos faster",
+        defaultValue: "How to edit YouTube videos faster",
       },
       {
         id: "length",
         label: "Target Video Duration",
         type: "select",
-        defaultValue: "8-10 Minutes (Standard YouTube Long-form)",
+        defaultValue: "8-10 Minutes",
         options: [
-          { label: "5-7 Minutes (Punchy / High Velocity)", value: "5-7 min" },
-          { label: "8-10 Minutes (Standard YouTube Long-form)", value: "8-10 min" },
-          { label: "12-15 Minutes (In-depth Deep Dive)", value: "12-15 min" },
+          { label: "5-7 Minutes", value: "5-7 min" },
+          { label: "8-10 Minutes", value: "8-10 min" },
+          { label: "12-15 Minutes", value: "12-15 min" },
         ],
       },
       {
         id: "tone",
-        label: "Presenter Tone & Persona",
+        label: "Presenter Tone",
         type: "select",
-        defaultValue: "Energetic Tech Analyst (MKBHD / Cleo Abram style)",
+        defaultValue: "Practical & Clear",
         options: [
-          { label: "Energetic Tech Analyst (MKBHD / Cleo Abram style)", value: "Tech Analyst" },
-          { label: "Storyteller & Documentary (MagnatesMedia style)", value: "Storyteller" },
-          { label: "Educational & Friendly (Ali Abdaal style)", value: "Educational" },
-          { label: "Humorous & Fast-Paced (Linus Tech Tips style)", value: "Fast Humorous" },
+          { label: "Practical & Clear", value: "Practical" },
+          { label: "Engaging & Fast-Paced", value: "Fast" },
+          { label: "Tutorial & Step-by-Step", value: "Tutorial" },
         ],
       },
-      {
-        id: "keyPoints",
-        label: "Key Arguments or Sections to Include",
-        type: "textarea",
-        placeholder: "e.g.,\n1. Recent layoffs stats\n2. Real AI tools coding faster than humans\n3. What skills actually stay safe\n4. Actionable advice for beginners",
-      },
     ],
-    sampleOutput: `## 🎬 SCRIPT: The 2025 AI Revolution (Why Junior Jobs Are Disappearing)
+    sampleOutput: `VIDEO SCRIPT: How to Edit YouTube Videos Faster
 
-### ⏱️ SECTION 1: THE RETENTION HOOK (0:00 - 0:45)
-**[VISUAL CUE]**: Quick montage of dramatic headlines from Bloomberg, TechCrunch, and WSJ. Ambient tension riser music in background.
-**[CAMERA]**: Direct to camera, medium close-up, sharp lighting.
+[0:00 - 0:30] HOOK & PROBLEM
+VISUAL: Screen recording showing timeline with dozens of cuts, scrubbed through at 2x speed.
+PRESENTER: "If you spend ten hours editing a ten-minute video, you are not alone. But the bottleneck usually is not your editing software. It is your project organization before you make the first cut. Today, we are breaking down a four-step editing workflow that cuts timeline editing time in half."
 
-> **SPEAKER**: "In the next 3 years, the traditional 'entry-level' software engineer might cease to exist. Not because companies are stopping hiring, but because one junior coder with Claude 3.7 or Cursor now does the work of five people. But here is the paradox nobody is talking about: while generic entry jobs are vanishing, the pay for engineers who master AI orchestration is skyrocketing. In this video, we are breaking down the hard data, the 3 skills that will keep you indispensable, and the exact roadmap to thrive in 2025."
+[0:30 - 2:00] STEP 1: PRE-EDIT PREPARATION
+VISUAL: B-roll showing folder structure on desktop (Footage, Audio, Graphics, Exports).
+PRESENTER: "Before you drag a single clip onto your timeline, organize your media in a standardized project template. Sorting talking head clips and B-roll into labeled bins eliminates searching mid-edit."
 
----
+[2:00 - 4:30] STEP 2: THE ROUGH CUT WITH TEXT-BASED EDITING
+VISUAL: Timeline demonstration using ripple delete keyboard shortcuts.
+PRESENTER: "Do your first pass using ripple delete shortcuts mapped to your left hand. Never color grade, add sound effects, or adjust volume on your first pass. Your only goal is cutting dead air and mistakes."
 
-### ⏱️ SECTION 2: THE DATA REALITY (0:45 - 2:30)
-**[VISUAL CUE]**: Motion graphic showing tech job postings chart dropping 32% since 2022, contrasted with AI dev tooling investment.
-**[AUDIO]**: Subtle synth bassline kicks in.
+[4:30 - 6:30] STEP 3: B-ROLL AND PACING
+VISUAL: Timeline showing B-roll placed on V2 track directly over talking-head pauses.
+PRESENTER: "Add secondary footage only where the concept benefits from visual demonstration. Keep each B-roll cut between two and four seconds to maintain natural pacing."
 
-> **SPEAKER**: "Let's strip away the hype and look at the raw numbers. In 2021, tech companies hired in anticipation of infinite growth. Then interest rates rose. But something else happened in early 2024: code generation crossed the inflection point..."
-*(Full multi-page script generated in Pro)*`,
+[6:30 - 8:00] STEP 4: SOUND DESIGN & EXPORT
+VISUAL: Audio track mixer showing dialogue normalized to -14 LUFS and background music at -26 dB.
+PRESENTER: "Set your master dialogue levels first, then bring music underneath. Use export presets so you never have to re-enter render settings."
+
+[8:00 - 8:30] OUTRO
+PRESENTER: "Check the description for our free project folder checklist, and subscribe for more practical editing guides."`,
   },
 
   {
@@ -575,58 +542,49 @@ Check availability on YouTube handle (\`@handle\`), X/Twitter, and \`.com\` doma
     description: "Full 30-day publishing schedule with publishing dates, video themes, hooks, and formats (Long-form vs Shorts).",
     category: "Strategy & Planning",
     isPro: true,
-    badge: "Pro",
+    badge: "Pro (Coming Soon)",
     iconName: "Calendar",
     fields: [
       {
         id: "niche",
         label: "Channel Niche & Content Focus",
         type: "text",
-        placeholder: "e.g., Personal Finance for Millennials / Gen-Z",
-        required: true,
+        placeholder: "e.g., Personal Productivity & Time Management",
+        defaultValue: "Personal Productivity & Time Management",
       },
       {
         id: "frequency",
         label: "Publishing Cadence",
         type: "select",
-        defaultValue: "2 Long-Form + 3 Shorts per week",
+        defaultValue: "1 Long-Form + 2 Shorts per week",
         options: [
           { label: "1 Long-Form + 2 Shorts per week", value: "1L + 2S" },
-          { label: "2 Long-Form + 3 Shorts per week", value: "2L + 3S" },
-          { label: "3 Long-Form per week", value: "3L" },
-          { label: "Daily Shorts (30 Shorts)", value: "Daily Shorts" },
-        ],
-      },
-      {
-        id: "goal",
-        label: "Primary 30-Day Goal",
-        type: "select",
-        defaultValue: "Subscriber Growth & Viral Reach",
-        options: [
-          { label: "Subscriber Growth & Viral Reach", value: "Sub Growth" },
-          { label: "High Watch Time & Monetization", value: "Watch Time" },
-          { label: "Digital Product / Service Sales", value: "Conversion" },
+          { label: "2 Long-Form per week", value: "2L" },
+          { label: "Daily Shorts", value: "Daily Shorts" },
         ],
       },
     ],
-    sampleOutput: `### 🗓️ 30-DAY STRATEGIC PUBLISHING MATRIX
+    sampleOutput: `30-DAY CONTENT CALENDAR OUTLINE
 
-#### **WEEK 1: Foundation & High-Search Intent**
-* **Day 2 (Long-Form 1):** *"How I Save 50% of My Income on a $60k Salary (Real Budget Breakdown)"*
-  - *Format:* Evergreen Case Study
-  - *Goal:* High search retention & template download CTA.
-* **Day 4 (Short 1):** *"Stop Buying Coffee? The Math Behind the Latte Factor Myth"*
-  - *Format:* Myth-Busting POV
-* **Day 6 (Long-Form 2):** *"The 3 Bank Accounts Everyone Needs in 2025"*
-  - *Format:* Actionable Beginner Guide
-* **Day 7 (Short 2):** *"Why High Yield Savings Beats Your Regular Bank 10x"*
+WEEK 1:
+- Day 2 (Long-Form): "The 3 Habits That Simplified My Daily Routine" (Focus: Evergreen Search)
+- Day 4 (Short): "One Morning Habit to Stop Today" (Focus: Quick Tip)
+- Day 6 (Short): "How I Organize Weekly Priorities" (Focus: Tool Walkthrough)
 
-#### **WEEK 2: Viral Controversy & Curiosity**
-* **Day 9 (Short 3):** *"Is Buying a House in Your 20s a Trap?"*
-* **Day 11 (Long-Form 3):** *"I Analyzed 500 Millionaires: They All Share These 4 Habits"*
-* **Day 13 (Short 4):** *"The 24-Hour Rule That Stopped My Impulse Buying"*
-* **Day 15 (Long-Form 4):** *"Beginner's Guide to Index Funds (S&P 500 Explained in 8 Minutes)"*
-*(Weeks 3 & 4 fully detailed in Pro)*`,
+WEEK 2:
+- Day 9 (Long-Form): "The Problem With Most To-Do Lists" (Focus: Problem & Solution)
+- Day 11 (Short): "Time Blocking in 30 Seconds" (Focus: Visual Guide)
+- Day 13 (Short): "Desk Setup Essentials" (Focus: Workspace Organization)
+
+WEEK 3:
+- Day 16 (Long-Form): "How to Maintain Focus in a Distracting World" (Focus: In-Depth Guide)
+- Day 18 (Short): "The 2-Minute Rule Explained" (Focus: Actionable Advice)
+- Day 20 (Short): "My Evening Shutdown Routine" (Focus: Work-Life Balance)
+
+WEEK 4:
+- Day 23 (Long-Form): "Monthly Review Checklist: How I Plan Ahead" (Focus: Practical Workflow)
+- Day 25 (Short): "3 Digital Decluttering Steps" (Focus: Quick Win)
+- Day 27 (Short): "Book Recommendations for Focus" (Focus: Curated Suggestions)`,
   },
 
   {
@@ -635,46 +593,38 @@ Check availability on YouTube handle (\`@handle\`), X/Twitter, and \`.com\` doma
     description: "In-depth audit of channel performance bottlenecks with a step-by-step 90-day growth roadmap.",
     category: "Strategy & Planning",
     isPro: true,
-    badge: "Pro",
+    badge: "Pro (Coming Soon)",
     iconName: "BarChart3",
     fields: [
       {
         id: "channelName",
         label: "Channel Name & Niche",
         type: "text",
-        placeholder: "e.g., CodeWithKev (Web development & frontend)",
-        required: true,
+        placeholder: "e.g., WebDevDaily (Tutorials & coding tips)",
+        defaultValue: "WebDevDaily (Tutorials & coding tips)",
       },
       {
         id: "stats",
         label: "Current Metrics (Subscribers, Average Views, CTR, AVD)",
         type: "textarea",
-        placeholder: "e.g.,\n- 4,200 Subscribers\n- Average views: 800 - 1,200\n- Average CTR: 3.8%\n- Average View Duration: 35% (3 min on 8 min video)\n- Upload frequency: 1x/week",
-        required: true,
-      },
-      {
-        id: "struggles",
-        label: "Primary Obstacle or Bottleneck",
-        type: "textarea",
-        placeholder: "e.g., Videos plateau after 48 hours; hard to get new non-subscribers to click.",
+        placeholder: "e.g., Uploading once a week, views plateauing after 48 hours",
+        defaultValue: "Uploading once a week, views plateauing after 48 hours",
       },
     ],
-    sampleOutput: `## 📊 CHANNEL DIAGNOSTIC REPORT: CodeWithKev
+    sampleOutput: `CHANNEL AUDIT & GROWTH PLAN (SAMPLE)
 
-### 1. ⚠️ Critical Bottlenecks Identified:
-* **CTR Deficit (3.8% vs 6.5% Benchmark):** Your impressions are getting shown by the algorithm, but the thumbnail/title packaging fails to convert browse traffic.
-* **Retention Drop at 0:45 (35% AVD):** Viewers drop off heavily during the intro setup before the value payload is delivered.
-* **48-Hour Plateau:** Strong subscriber-first viewing, but lacking evergreen search optimization to capture compounding long-tail traffic.
+1. PACKAGING DIAGNOSTIC
+- Titles: Simplify vocabulary. Replace technical jargon with the tangible outcome the viewer will achieve.
+- Thumbnails: Limit text to 3 high-contrast words. Ensure subject face or focal object stands out on mobile displays.
 
-### 2. 🎯 High-Impact Growth Levers:
-1. **The 5-Second Hook Rule:** Cut all channel intros, animated logos, and "Welcome back guys". Start mid-action with the problem resolution.
-2. **Thumbnail Contrast Elevation:** Adopt dual-element thumbnails (one bold face reaction + one high-contrast focal object), text strictly under 3 words.
-3. **Pillar Content Re-Packaging:** Take your best-performing tutorial and turn it into a 3-part playlist series with end-screen interlinking.
+2. RETENTION REVIEW
+- First 30 Seconds: Cut channel animated intros and greeting filler. Open immediately with the core problem.
+- Mid-Roll Engagement: Insert a visual transition or screen reset around the 3-minute mark to retain attention.
 
-### 3. 🗓️ 90-Day Execution Roadmap:
-* **Phase 1 (Days 1-30):** Retitle and re-thumbnail your top 10 historical videos to revive dead impressions.
-* **Phase 2 (Days 31-60):** Shift upload schedule to 1 Evergreen Tutorial + 2 Short hooks per week.
-* **Phase 3 (Days 61-90):** Collaboration and cross-promotional community challenges.`,
+3. 90-DAY STRATEGY
+- Month 1: Update thumbnails and titles on top 5 best-performing evergreen videos.
+- Month 2: Test 2 YouTube Shorts per week linking back to existing long-form guides.
+- Month 3: Group related videos into topical playlists with clear progression.`,
   },
 
   {
@@ -683,46 +633,38 @@ Check availability on YouTube handle (\`@handle\`), X/Twitter, and \`.com\` doma
     description: "Reverse-engineer top competitor strengths, uncover content gaps, and find unsaturated video opportunities.",
     category: "Strategy & Planning",
     isPro: true,
-    badge: "Pro",
+    badge: "Pro (Coming Soon)",
     iconName: "Crosshair",
     fields: [
       {
         id: "competitors",
         label: "Competitor Channels / Creators",
         type: "textarea",
-        placeholder: "e.g., Fireship, WebDevSimplified, Kevin Powell",
-        required: true,
+        placeholder: "e.g., General tech review and coding channels",
+        defaultValue: "General tech review and coding channels",
       },
       {
         id: "yourNiche",
-        label: "Your Channel's Unique Angle / Niche",
+        label: "Your Channel's Unique Angle",
         type: "text",
-        placeholder: "e.g., Pragmatic full-stack React & Next.js for indie hackers",
-        required: true,
-      },
-      {
-        id: "targetAudience",
-        label: "Target Audience You Want to Win Over",
-        type: "text",
-        placeholder: "e.g., Developers building micro-SaaS and side hustles",
+        placeholder: "e.g., Practical web dev tutorials for beginners",
+        defaultValue: "Practical web dev tutorials for beginners",
       },
     ],
-    sampleOutput: `### 🎯 COMPETITOR BREAKDOWN & CONTENT BLUEPRINT
+    sampleOutput: `COMPETITOR CONTENT GAP ANALYSIS (SAMPLE)
 
-#### 1. 🔍 Competitor Matrix Analysis
-* **Fireship:** Masters ultra-high-velocity 100-second overviews and developer meme culture. *Strength:* Maximum entertainment & surface-level awareness. *Gap:* Developers cannot actually code along or build production apps from it.
-* **WebDevSimplified:** Clean, deeply educational, textbook conceptual walkthroughs. *Strength:* High search trust. *Gap:* Pacing can feel formal; lacks real-world startup chaos.
-* **Kevin Powell:** The undisputed king of CSS. *Strength:* Niche mastery. *Gap:* Pure styling, leaves full-stack architecture untouched.
+1. COMPETITOR STRENGTHS & COMMON PATTERNS
+- High production value and fast-paced editing.
+- Frequent coverage of breaking tech news and new framework releases.
 
-#### 2. 💎 The Blue Ocean Opportunity for You:
-> **"The Indie Hacker Developer"**: Bridge the gap between Fireship's modern tech stack excitement and WebDevSimplified's technical depth by building **real revenue-generating products** on screen.
+2. COMMON AUDIENCE GAPS
+- Many videos move too quickly for true beginners.
+- Lack of follow-up projects showing how concepts work in complete applications.
 
-#### 3. 🚀 5 Videos That Out-Perform Competitor Gaps:
-1. *"I Built a Profitable Micro-SaaS in 72 Hours with Next.js 15 (Full Stack Breakdown)"*
-2. *"Why Fireship's Favorite Tech Stacks Don't Scale to Real Customers"*
-3. *"The Junior Dev vs The Senior Indie Hacker: Who Ships Faster?"*
-4. *"Stop Building To-Do Apps: 5 Projects That Actually Land Clients"*
-5. *"The Minimalist Developer Stack That Costs $0/Month to Host"*`,
+3. RECOMMENDED CONTENT OPPORTUNITIES
+- Complete, slow-paced beginner walkthroughs without skipped steps.
+- Real-world debugging sessions showing how to resolve common error messages.
+- Clear comparison guides: choosing tools based on real project needs.`,
   },
 
   {
@@ -731,56 +673,32 @@ Check availability on YouTube handle (\`@handle\`), X/Twitter, and \`.com\` doma
     description: "10 viral 30-60s Short/Reel/TikTok scripts derived from a single topic, formatted with visual and audio cues.",
     category: "Scripting & Content",
     isPro: true,
-    badge: "Pro",
+    badge: "Pro (Coming Soon)",
     iconName: "Zap",
     fields: [
       {
         id: "topic",
         label: "Core Topic or Theme",
         type: "text",
-        placeholder: "e.g., Time management & avoiding burnout for creators",
-        required: true,
-      },
-      {
-        id: "format",
-        label: "Shorts Format Style",
-        type: "select",
-        defaultValue: "Fast-Paced Talking Head + B-Roll Overlays",
-        options: [
-          { label: "Fast-Paced Talking Head + B-Roll Overlays", value: "Talking Head" },
-          { label: "Screen Recording / Demonstration", value: "Screen Demo" },
-          { label: "POV / Skit Humor", value: "POV Skit" },
-          { label: "Documentary Style with Text Cards", value: "Docu Text" },
-        ],
-      },
-      {
-        id: "ctaGoal",
-        label: "Primary Goal / CTA",
-        type: "select",
-        defaultValue: "Follow / Subscribe for Part 2",
-        options: [
-          { label: "Follow / Subscribe for Part 2", value: "Follow Part 2" },
-          { label: "Comment debate trigger", value: "Comment Trigger" },
-          { label: "Save & Share with a friend", value: "Save & Share" },
-        ],
+        placeholder: "e.g., Time management habits for creators",
+        defaultValue: "Time management habits for creators",
       },
     ],
-    sampleOutput: `### ⚡ 10 VIRAL YOUTUBE SHORTS SCRIPTS
+    sampleOutput: `SHORTS SCRIPT PACK (SAMPLE)
 
-#### SCRIPT 1: The "Don't Do This" Negative Hook
-* **Duration:** 35 seconds
-* **Hook (0-3s):** [Speaker looks into camera while slamming laptop shut] *"Stop using to-do lists. Seriously, delete them right now."*
-* **Twist (3-15s):** *"A to-do list is just an unranked graveyard of guilt. Highly productive people don't use lists — they calendar block."*
-* **Payoff (15-28s):** *"If it doesn't have a start time and an end time on your calendar, it is not a plan. It's a wish."*
-* **Loop CTA (28-35s):** *"Try it tomorrow for just 2 hours, and subscribe for part 2 where I show my calendar template."*
+SCRIPT 1: THE COMMON MISTAKE
+- Duration: 30 seconds
+- Visual: Close-up of messy desktop with 40 browser tabs open.
+- Hook (0-3s): "If you have forty tabs open right now, here is a simple fix."
+- Body (3-22s): "Tab overload happens when you use tabs as a to-do list. Close everything, pick one active project, and bookmark the rest."
+- CTA (22-30s): "Subscribe for one daily focus habit."
 
-#### SCRIPT 2: The Shocking Statistic Hook
-* **Duration:** 42 seconds
-* **Hook (0-4s):** [Rapid countdown timer graphic] *"You only have about 4,000 weeks in your entire lifetime. You've already used 1,500 of them."*
-* **Body (4-25s):** *"The average person spends 11 years looking at a smartphone screen. That’s not downtime; that's an entire decade erased..."*
-* **CTA (25-42s):** *"Save this video before your next doomscroll."*
-
-*(Scripts 3 through 10 included in full output)*`,
+SCRIPT 2: THE 2-MINUTE RULE
+- Duration: 35 seconds
+- Visual: Stopwatch timer running on smartphone.
+- Hook (0-4s): "If a task takes under two minutes, do it right now."
+- Body (4-25s): "Replying to an email, clearing your desk, or saving a project. Small tasks compound into massive mental clutter when postponed."
+- CTA (25-35s): "Save this reminder for your morning routine."`,
   },
 
   {
@@ -789,59 +707,39 @@ Check availability on YouTube handle (\`@handle\`), X/Twitter, and \`.com\` doma
     description: "Full YouTube Partner Program eligibility audit, revenue potential estimation, and alternative monetization vectors.",
     category: "Strategy & Planning",
     isPro: true,
-    badge: "Pro",
+    badge: "Pro (Coming Soon)",
     iconName: "DollarSign",
     fields: [
       {
         id: "subscribers",
         label: "Current Subscriber Count",
         type: "number",
-        placeholder: "e.g., 780",
-        required: true,
+        placeholder: "e.g., 750",
+        defaultValue: "750",
       },
       {
         id: "watchHours",
         label: "Valid Public Watch Hours (Past 12 Months)",
         type: "number",
-        placeholder: "e.g., 2,400",
-        required: true,
-      },
-      {
-        id: "shortsViews",
-        label: "Public Shorts Views in Last 90 Days (Optional)",
-        type: "number",
-        placeholder: "e.g., 150000",
-      },
-      {
-        id: "niche",
-        label: "Channel Niche (Determines Estimated RPM)",
-        type: "select",
-        defaultValue: "Finance & Investing ($15 - $35 RPM)",
-        options: [
-          { label: "Finance & Investing ($15 - $35 RPM)", value: "Finance ($20 RPM)" },
-          { label: "Tech, Software & AI ($8 - $18 RPM)", value: "Tech ($12 RPM)" },
-          { label: "Education & Productivity ($5 - $12 RPM)", value: "Education ($8 RPM)" },
-          { label: "Gaming & Entertainment ($2 - $6 RPM)", value: "Gaming ($3 RPM)" },
-          { label: "Lifestyle, Vlogs & Fitness ($3 - $8 RPM)", value: "Lifestyle ($5 RPM)" },
-        ],
+        placeholder: "e.g., 2500",
+        defaultValue: "2500",
       },
     ],
-    sampleOutput: `## 💰 MONETIZATION READINESS AUDIT
+    sampleOutput: `YOUTUBE PARTNER PROGRAM READINESS AUDIT (SAMPLE)
 
-### 1. 📊 YPP Eligibility Scorecard:
-* **Subscriber Requirement:** **780 / 1,000** (78% achieved — **220 subs to go**)
-* **Watch Hours Requirement:** **2,400 / 4,000 hrs** (60% achieved — **1,600 hrs to go**)
-* **Overall Status:** 🟡 **IN PROGRESS (Estimated 45-60 days to eligibility)**
+1. YPP ELIGIBILITY PROGRESS
+- Subscribers: 750 / 1,000 (250 subscribers remaining)
+- Watch Hours: 2,500 / 4,000 hours (1,500 hours remaining)
+- Status: Progressing towards full AdSense partner requirements
 
-### 2. 💵 Projected AdSense Revenue (Post-Monetization):
-* Estimated RPM for your niche: **$12.00 / 1,000 views**
-* At 50,000 monthly views: **~$600 / month**
-* At 200,000 monthly views: **~$2,400 / month**
+2. PRACTICAL WATCH TIME LEVERS
+- Create 10 to 12 minute tutorials on high-demand search topics.
+- Build thematic playlists to encourage auto-play viewing sessions.
+- Review audience retention curves to eliminate early video drop-offs.
 
-### 3. 🚀 3 Immediate Revenue Streams (Don't Wait for 1,000 Subs!):
-1. **Affiliate Link Integration:** Place curated software/gear links in all descriptions. Channels with 500 loyal subs often earn $200-$500/mo via affiliate links.
-2. **Digital Template / Cheatsheet:** Sell a $9 Notion or PDF guide. With just 1% conversion from 800 views, that's $72/video.
-3. **1-on-1 Consultation / Audits:** Offer 30-minute advisory calls for $50 via Cal.com.`,
+3. ADDITIONAL REVENUE CHANNELS (PRE-PARTNER)
+- Curated affiliate links for gear or software you legitimately use.
+- Digital guides, checklists, or project starter templates.`,
   },
 
   {
@@ -850,56 +748,32 @@ Check availability on YouTube handle (\`@handle\`), X/Twitter, and \`.com\` doma
     description: "High-volume, low-competition keyword clusters, search intent breakdown, and target title variations.",
     category: "SEO & Optimization",
     isPro: true,
-    badge: "Pro",
+    badge: "Pro (Coming Soon)",
     iconName: "Search",
     fields: [
       {
         id: "seedKeyword",
         label: "Seed Keyword or Broad Topic",
         type: "text",
-        placeholder: "e.g., Python web scraping, Home coffee brewing, Figma tutorials",
-        required: true,
-      },
-      {
-        id: "difficultyTarget",
-        label: "Channel Size / Competition Appetite",
-        type: "select",
-        defaultValue: "Low Competition (High chance to rank for new channels)",
-        options: [
-          { label: "Low Competition (High chance to rank for new channels)", value: "Low Competition" },
-          { label: "Balanced Growth (Moderate volume + clear search intent)", value: "Balanced" },
-          { label: "High Volume Head Terms (Established channels)", value: "High Volume" },
-        ],
-      },
-      {
-        id: "audienceLevel",
-        label: "Audience Skill Level",
-        type: "select",
-        defaultValue: "Complete Beginners",
-        options: [
-          { label: "Complete Beginners", value: "Beginners" },
-          { label: "Intermediate Practitioners", value: "Intermediate" },
-          { label: "Advanced / Professional", value: "Advanced" },
-        ],
+        placeholder: "e.g., Python web development",
+        defaultValue: "Python web development",
       },
     ],
-    sampleOutput: `### 🎯 KEYWORD CLUSTERING & OPPORTUNITY REPORT
+    sampleOutput: `KEYWORD RESEARCH REPORT (SAMPLE)
 
-#### 🔑 Primary Low-Competition Cluster:
-* **"python web scraping for beginners 2025"** *(Search Intent: Step-by-step tutorial)*
-* **"how to scrape websites using python without getting blocked"** *(Intent: Pain-point solution)*
-* **"beautifulsoup vs playwright python"** *(Intent: Direct technical comparison)*
-* **"python web scraping project portfolio"** *(Intent: Job seeker utility)*
+1. LOW-COMPETITION SEARCH TERMS
+- python web development for beginners
+- build your first python web app
+- flask vs fastapi for small projects
 
-#### 📈 Search Intent Tier Breakdown:
-1. **Tier 1 (Problem-Aware):** *"how to extract data from website to excel python"*
-2. **Tier 2 (Tool-Specific):** *"selenium web scraping tutorial 2025"*
-3. **Tier 3 (Beginner Milestone):** *"build your first web scraper in 10 minutes"*
+2. SEARCH INTENT BREAKDOWN
+- Informational: understanding which python framework suits a specific project.
+- Transactional: step-by-step tutorial guiding setup from terminal to browser.
 
-#### 🏆 3 High-Rank Video Titles:
-1. **Python Web Scraping for Beginners (Step-by-Step 2025 Guide)**
-2. **How to Scrape ANY Website in Python (Without Getting Blocked)**
-3. **I Built a Web Scraper in 10 Minutes (Beginner Python Project)**`,
+3. RECOMMENDED VIDEO TITLES
+- Python Web Development: Beginner Roadmap
+- How to Build a Simple Web App with Python
+- Flask vs FastAPI: Which Should You Learn First?`,
   },
 ];
 

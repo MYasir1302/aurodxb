@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://aurodxb.com/sitemap.xml",
+    sitemap: "https://www.aurodxb.com/sitemap.xml",
   };
 }

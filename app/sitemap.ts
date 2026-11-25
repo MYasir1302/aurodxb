@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { TOOLS } from "@/lib/tools-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://aurodxb.com";
+  const baseUrl = "https://www.aurodxb.com";
 
   // Static routes
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -50,12 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Dynamic tool routes
+  // Dynamic tool routes (all 16 tools)
   const toolRoutes: MetadataRoute.Sitemap = TOOLS.map((tool) => ({
     url: `${baseUrl}/tools/${tool.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly",
-    priority: tool.isPro ? 0.75 : 0.85,
+    priority: tool.isPro ? 0.7 : 0.85,
   }));
 
   return [...staticRoutes, ...toolRoutes];

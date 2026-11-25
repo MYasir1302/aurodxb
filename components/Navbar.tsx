@@ -3,13 +3,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Play, Sparkles, Crown, Menu, X, ArrowUpRight, Zap } from "lucide-react";
+import { Play, Crown, Menu, X } from "lucide-react";
 import { useUser } from "./UserContext";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const pathname = usePathname();
-  const { isPro, togglePro, openUpgradeModal } = useUser();
+  const { openWaitlistModal } = useUser();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -57,57 +57,29 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Right Action Buttons */}
+        {/* Right Action Button: Get Pro -> Waitlist */}
         <div className="hidden md:flex items-center space-x-3">
-          {/* Quick Demo Pro Toggle */}
           <button
-            onClick={togglePro}
-            title="Toggle Pro status for testing"
-            className={cn(
-              "flex items-center space-x-1.5 rounded-full px-3 py-1 text-xs font-semibold transition-all border",
-              isPro
-                ? "border-cyan-500/50 bg-cyan-500/10 text-cyan-300 shadow-glow-cyan"
-                : "border-white/10 bg-white/5 text-gray-400 hover:text-white hover:border-white/20"
-            )}
+            onClick={() => openWaitlistModal("Pro Creator")}
+            className="flex items-center space-x-1.5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-glow-sm hover:brightness-110 active:scale-[0.98] transition-all"
           >
-            <Zap className={cn("w-3.5 h-3.5", isPro ? "text-cyan-400 fill-cyan-400" : "")} />
-            <span>Mode: {isPro ? "PRO Active" : "Free Tier"}</span>
+            <Crown className="w-4 h-4 text-yellow-300" />
+            <span>Get Pro</span>
           </button>
-
-          {/* Upgrade / Pro CTA */}
-          {isPro ? (
-            <div className="flex items-center space-x-1.5 rounded-xl border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-violet-300">
-              <Crown className="w-3.5 h-3.5 text-yellow-400" />
-              <span>Pro Member</span>
-            </div>
-          ) : (
-            <button
-              onClick={openUpgradeModal}
-              className="flex items-center space-x-1.5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-glow-sm hover:brightness-110 active:scale-[0.98] transition-all"
-            >
-              <Crown className="w-4 h-4 text-yellow-300" />
-              <span>Unlock Pro</span>
-            </button>
-          )}
         </div>
 
         {/* Mobile Hamburger Button */}
         <div className="flex md:hidden items-center space-x-2">
           <button
-            onClick={togglePro}
-            className={cn(
-              "p-1.5 rounded-lg border text-xs",
-              isPro
-                ? "border-cyan-500/40 text-cyan-300 bg-cyan-500/10"
-                : "border-white/10 text-gray-400"
-            )}
-            title="Toggle Pro mode"
+            onClick={() => openWaitlistModal("Pro Creator")}
+            className="rounded-lg bg-gradient-to-r from-violet-600 to-cyan-500 px-3 py-1.5 text-xs font-semibold text-white"
           >
-            <Zap className="w-4 h-4" />
+            Get Pro
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="rounded-lg p-2 text-gray-300 hover:bg-white/10 hover:text-white"
+            aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -130,35 +102,17 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="pt-3 border-t border-white/10 space-y-2">
+          <div className="pt-3 border-t border-white/10">
             <button
               onClick={() => {
-                togglePro();
                 setMobileMenuOpen(false);
+                openWaitlistModal("Pro Creator");
               }}
-              className="w-full flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-gray-200"
+              className="w-full flex items-center justify-center space-x-2 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 py-3 font-semibold text-white shadow-glow-sm"
             >
-              <span className="flex items-center space-x-2">
-                <Zap className="w-4 h-4 text-yellow-400" />
-                <span>Simulate Pro Subscription</span>
-              </span>
-              <span className="font-semibold text-cyan-400">
-                {isPro ? "Enabled" : "Disabled"}
-              </span>
+              <Crown className="w-4 h-4 text-yellow-300" />
+              <span>Get Pro (Join Waitlist)</span>
             </button>
-
-            {!isPro && (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  openUpgradeModal();
-                }}
-                className="w-full flex items-center justify-center space-x-2 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 py-3 font-semibold text-white shadow-glow-sm"
-              >
-                <Crown className="w-4 h-4 text-yellow-300" />
-                <span>Unlock Pro Features</span>
-              </button>
-            )}
           </div>
         </div>
       )}

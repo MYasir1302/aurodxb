@@ -1,187 +1,126 @@
-# AuroDxb (aurodxb.com) 🚀
+# AuroDxb (www.aurodxb.com) 🚀
 
-> **Production-ready AI-powered YouTube growth platform for creators.**  
-> Built with Next.js (App Router), TypeScript, Tailwind CSS, Framer Motion, and the Google Gemini API. Deploys seamlessly on Vercel with zero extra configuration.
+> **AI-powered YouTube creator toolkit for high-CTR titles, descriptions, SEO tags, and thumbnails.**  
+> Built with Next.js (App Router), TypeScript, Tailwind CSS, Framer Motion, and the Google Gemini API.
 
 ---
 
-## 🌟 Overview & Design Philosophy
+## 🌟 Overview & Architecture
 
-**AuroDxb** is a modern dark-themed web platform engineered specifically for YouTube creators, scriptwriters, and media agencies. Unlike generic AI chatbots, every prompt and workflow in AuroDxb is tuned for the YouTube recommendation engine, viewer retention curves, and high-CTR psychology.
+**AuroDxb** is a fast, dark-themed platform providing practical utilities for video creators, scriptwriters, and media managers. Every tool produces clean, copy-ready metadata formatted specifically for YouTube.
 
 - **Theme**: Ultra-dark aesthetic (Background `#07070D`, card surfaces `#0F0F1A`, 1px borders `rgba(255,255,255,0.08)`).
-- **Accents**: Electric violet (`#7C3AED`) to cyan (`#06B6D4`), accented by hot YouTube red (`#FF2D55`).
+- **Accents**: Electric Violet (`#7C3AED`) to Cyan (`#06B6D4`), with YouTube Hot-Red (`#FF2D55`) accents.
 - **Typography**: Space Grotesk (headings) and Inter (body).
-- **Micro-interactions**: Glassmorphism cards, glowing neon hover states, animated gradient borders on Pro tools, loading skeletons, and instant copy/download actions.
+- **Limits & Security**:
+  - Server-side daily limit: **10 free generations per day** per visitor IP, tracked via SHA-256 hash in Upstash Redis (expires after 24h).
+  - Rate limit: **6 requests per minute** per IP to protect Gemini quota.
+  - In-memory fallback if Redis credentials are not configured.
 
 ---
 
-## 🛠️ Included Tools (16 Specialized Utilities)
+## 🛠️ Complete Tools Roster
 
-### 🟢 Free Tools (No Login Required)
-1. **YouTube Title Generator** (`/tools/youtube-title-generator`): 10 click-worthy, algorithm-hooked titles categorized by psychological angle.
-2. **Video Description Generator** (`/tools/description-generator`): SEO-optimized description with hook paragraph, structured timestamps outline, links, and CTAs.
-3. **Tags Generator** (`/tools/tags-generator`): Comma-separated high-ranking tags ready for 1-click copy into YouTube Studio, plus search-intent breakdown.
-4. **Hashtag Generator** (`/tools/hashtag-generator`): High-reach and niche hashtags for Shorts and long-form uploads.
-5. **Video Idea Generator** (`/tools/video-idea-generator`): 15 viral video concepts with thumbnail hooks and angles.
-6. **Thumbnail Text Ideas** (`/tools/thumbnail-text-generator`): Punchy 2-4 word overlays engineered for high contrast and mobile CTR.
-7. **Channel Name Generator** (`/tools/channel-name-generator`): Memorable, brandable channel names across modern, authority, and creative styles.
+### 🟢 9 Free Tools (No Account Required)
+1. **YouTube Title Generator** (`/tools/youtube-title-generator`): 10 click-worthy titles under 70 characters with short 12-word explanations.
+2. **Video Description Generator** (`/tools/description-generator`): Structured descriptions with hook paragraph, timestamps outline, and links.
+3. **Tags Generator** (`/tools/tags-generator`): Clean, comma-separated tags under 500 characters.
+4. **Hashtag Generator** (`/tools/hashtag-generator`): Space-separated hashtags prefixed with `#`.
+5. **Video Idea Generator** (`/tools/video-idea-generator`): 15 video concepts with hooks and visual ideas.
+6. **Thumbnail Text Ideas** (`/tools/thumbnail-text-generator`): Punchy 2-4 word overlays across curiosity, warning, and bold angles.
+7. **Channel Name Generator** (`/tools/channel-name-generator`): 16 brandable names with suggested `@handles`.
 8. **Thumbnail Downloader** (`/tools/thumbnail-downloader`): Instant, client-side HD thumbnail extraction in all official resolutions (1080p MaxRes, SD, HQ, MQ). *Zero AI required.*
-9. **Comment Reply Generator** (`/tools/comment-reply-generator`): Thoughtful, community-building, or witty replies to foster loyalty.
+9. **Comment Reply Generator** (`/tools/comment-reply-generator`): 5 distinct community-building reply options.
 
-### 🟣 Pro Tools (Locked Behind Pro / Upgrade Modal)
-1. **Full Video Script Writer** (`/tools/video-script-writer`): End-to-end 8-15 minute script with 0:00 retention hook, visual B-roll cues, pacing resets, and zero-dropoff outros.
-2. **30-Day Content Calendar** (`/tools/content-calendar-generator`): Strategic 30-day publishing matrix mixing long-form evergreen videos and Shorts.
-3. **Channel Audit & Growth Plan** (`/tools/channel-audit`): Algorithmic diagnosis of CTR/AVD bottlenecks with a 90-day execution roadmap.
-4. **Competitor Analysis Assistant** (`/tools/competitor-analysis`): Reverse-engineers top competitor weaknesses and discovers uncontested video topics.
-5. **Shorts Script Pack (10 Scripts)** (`/tools/shorts-script-pack`): 10 viral 30-60s vertical scripts derived from a single topic.
-6. **Monetization Readiness Checker** (`/tools/monetization-readiness-checker`): YouTube Partner Program (YPP) audit, RPM estimator, and immediate non-AdSense revenue streams.
-7. **SEO Keyword Research Assistant** (`/tools/seo-keyword-research`): Low-competition keyword clusters and rank-ready titles.
+### 🟣 7 Pro Tools (Launching Soon)
+1. **Full Video Script Writer** (`/tools/video-script-writer`): End-to-end 8-15 minute script with hook, pacing cues, and outro.
+2. **30-Day Content Calendar** (`/tools/content-calendar-generator`): Strategic 30-day publishing schedule mixing long-form and Shorts.
+3. **Channel Audit & Growth Plan** (`/tools/channel-audit`): Actionable 90-day growth roadmap and bottleneck diagnosis.
+4. **Competitor Analysis Assistant** (`/tools/competitor-analysis`): Reverse-engineers content gaps and audience desires.
+5. **Shorts Script Pack (10 Scripts)** (`/tools/shorts-script-pack`): 10 viral vertical video scripts.
+6. **Monetization Readiness Checker** (`/tools/monetization-readiness-checker`): YouTube Partner Program requirements checklist and revenue avenues.
+7. **SEO Keyword Research Assistant** (`/tools/seo-keyword-research`): Low-competition keyword clusters and search intent breakdowns.
 
-*Note: You can preview all Pro tools instantly by clicking "Mode: Free Tier / PRO Active" in the navigation bar to toggle Demo Pro mode.*
+*(Pro tools currently show static sample output with inputs disabled, and an invitation to join the waitlist. Pro tools never call the Gemini API until launch.)*
 
 ---
 
-## 🔑 Google Gemini API Setup
+## 🔑 Environment Variables Setup
 
-AuroDxb uses a centralized API route (`/api/gemini`) that communicates directly with the Google Gemini REST API using `gemini-2.5-flash`.
+Create a `.env.local` file in your root directory based on `.env.example`:
 
-The API key is **only read on the server** via `process.env.GEMINI_API_KEY` and is never exposed to the client.
+```bash
+cp .env.example .env.local
+```
 
-### Step-by-Step API Key Setup:
-1. Visit [Google AI Studio](https://aistudio.google.com/).
-2. Sign in with your Google account and click **"Get API key"** -> **"Create API key"** (free tier available).
-3. In your local project root, copy `.env.example` to `.env.local`:
-   ```bash
-   cp .env.example .env.local
-   ```
-4. Paste your API key into `.env.local`:
-   ```env
-   GEMINI_API_KEY=AIzaSy...your_actual_key_here
-   ```
-5. Restart the development server (`npm run dev`).
+### 1. `GEMINI_API_KEY` (Required for live generation)
+- Visit [Google AI Studio](https://aistudio.google.com/).
+- Sign in with your Google account and click **"Get API key"** -> **"Create API key"** (free tier available).
+- Add to `.env.local`:
+  ```env
+  GEMINI_API_KEY=AIzaSy...your_key_here
+  ```
 
-*(If no key is configured, AuroDxb runs in graceful demo mode displaying sample outputs so you can test the UI without errors.)*
+### 2. `UPSTASH_REDIS_REST_URL` & `UPSTASH_REDIS_REST_TOKEN` (Recommended for production)
+- Create a free serverless Redis database at [Upstash Console](https://console.upstash.com/).
+- Under your database details, copy the **REST URL** and **REST Token**.
+- Add to `.env.local`:
+  ```env
+  UPSTASH_REDIS_REST_URL=https://your-database.upstash.io
+  UPSTASH_REDIS_REST_TOKEN=your_token_here
+  ```
+- *Note: If omitted, AuroDxb falls back to in-memory rate limiting with a console warning.*
+
+### 3. `RESEND_API_KEY` & `CONTACT_TO_EMAIL` (Optional)
+- Create a free account at [Resend](https://resend.com/) and generate an API key.
+- Add to `.env.local`:
+  ```env
+  RESEND_API_KEY=re_your_api_key_here
+  CONTACT_TO_EMAIL=your_inbox@domain.com
+  ```
+- When configured, submissions to `/contact` will forward directly to your inbox while also being logged in Redis.
 
 ---
 
 ## 💻 Local Development Commands
 
-### 1. Install Dependencies
 ```bash
+# 1. Install dependencies
 npm install
-```
 
-### 2. Run the Development Server
-```bash
+# 2. Run local development server
 npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+# Open http://localhost:3000
 
-### 3. Build for Production
-```bash
+# 3. Build for production
 npm run build
-```
 
-### 4. Start Production Server Locally
-```bash
+# 4. Start production server locally
 npm run start
 ```
 
 ---
 
-## 🚀 Deploying to Vercel (Zero Extra Config)
+## 🚀 Deploying to Vercel
 
 AuroDxb is configured for Next.js App Router and deploys to [Vercel](https://vercel.com) with **zero extra configuration**.
 
-### Method 1: Using the Vercel Dashboard (Recommended)
+### Method 1: Using the Vercel Dashboard
 
-1. Push your project to a new GitHub repository:
+1. Push your repository to GitHub:
    ```bash
-   git init
    git add .
-   git commit -m "Initial commit: AuroDxb complete YouTube AI suite"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/aurodxb.git
-   git push -u origin main
+   git commit -m "Update AuroDxb suite"
+   git push origin main
    ```
-2. Go to [vercel.com/new](https://vercel.com/new) and import your `aurodxb` GitHub repository.
-3. In the **Environment Variables** section, add:
-   - **Key**: `GEMINI_API_KEY`
-   - **Value**: `Your Google AI Studio API key`
-4. Click **Deploy**. Vercel will build and deploy the project in under 60 seconds.
-
-### Method 2: Using the Vercel CLI
-
-```bash
-# Install Vercel CLI if needed
-npm i -g vercel
-
-# Login and deploy
-vercel
-
-# Add your production environment variable
-vercel env add GEMINI_API_KEY
-# Enter your key, select Production & Preview
-
-# Deploy to production
-vercel --prod
-```
-
----
-
-## 📁 Project Architecture
-
-```
-d:\New Project/
-├── app/
-│   ├── api/
-│   │   ├── gemini/
-│   │   │   └── route.ts         # Secure server-side Gemini REST API caller with retry & rate limiting
-│   │   └── waitlist/
-│   │       └── route.ts         # Waitlist & checkout email lead storage endpoint
-│   ├── about/page.tsx           # About mission & creator philosophy
-│   ├── contact/page.tsx         # Interactive contact form & inquiries
-│   ├── pricing/page.tsx         # Pricing plans & feature comparison table
-│   ├── privacy/page.tsx         # Privacy policy
-│   ├── terms/page.tsx           # Terms of service & legal disclaimers
-│   ├── tools/
-│   │   ├── page.tsx             # Searchable, filterable 16-tool directory
-│   │   └── [slug]/page.tsx      # Dynamic two-panel runner for every tool
-│   ├── globals.css              # Dark theme styling, glassmorphism, animations
-│   ├── icon.tsx                 # Dynamic SVG favicon
-│   ├── layout.tsx               # Root layout, fonts (Space Grotesk + Inter), SEO metadata, JSON-LD
-│   ├── not-found.tsx            # Custom styled 404 page
-│   ├── opengraph-image.tsx      # Social share 1200x630 card generator
-│   ├── page.tsx                 # High-converting landing page (hero, mockup, stats, tools, FAQs)
-│   ├── robots.ts                # SEO robots.txt
-│   └── sitemap.ts               # Automated XML sitemap
-├── components/
-│   ├── DynamicIcon.tsx          # Lucide icon resolver
-│   ├── FaqSection.tsx           # Interactive FAQ accordion
-│   ├── Footer.tsx               # Footer with mandatory YouTube/Google disclaimer
-│   ├── HeroMockup.tsx           # Interactive Hero tool preview component
-│   ├── Navbar.tsx               # Sticky glass navbar with Demo Pro toggle
-│   ├── PricingSection.tsx       # Reusable pricing grid with monthly/yearly billing
-│   ├── ThumbnailDownloaderPanel.tsx # 1080p YouTube thumbnail downloader UI
-│   ├── ToolCard.tsx             # Reusable card with glow and Pro lock badge
-│   ├── ToolLayout.tsx           # Two-panel generator (inputs left, markdown output right)
-│   ├── UpgradeModal.tsx         # Modal for non-Pro users with 1-click preview
-│   ├── UserContext.tsx          # LocalStorage-backed Pro status & daily usage tracking
-│   └── WaitlistModal.tsx        # Confetti-enabled early-bird waitlist modal
-├── lib/
-│   ├── prompts.ts               # Central prompt templates for all 15 AI tools
-│   ├── tools-data.ts            # Detailed tool definitions, categories, and sample outputs
-│   ├── types.ts                 # TypeScript interfaces
-│   └── utils.ts                 # Utility functions (cn, YouTube ID parser)
-├── .env.example                 # Example environment variables
-├── .gitignore                   # Ignores .env*.local and build artifacts
-├── next.config.ts               # Next.js config with YouTube image domains
-├── package.json                 # Project dependencies & scripts
-├── postcss.config.mjs           # PostCSS config
-├── tailwind.config.ts           # Extended dark theme tokens & keyframe animations
-└── tsconfig.json                # TypeScript compiler config
-```
+2. In the [Vercel Dashboard](https://vercel.com), click **Add New Project** and import your repository.
+3. In **Environment Variables**, add:
+   - `GEMINI_API_KEY`
+   - `UPSTASH_REDIS_REST_URL`
+   - `UPSTASH_REDIS_REST_TOKEN`
+   - `RESEND_API_KEY` (optional)
+   - `CONTACT_TO_EMAIL` (optional)
+4. Click **Deploy**.
 
 ---
 

@@ -1,94 +1,90 @@
 "use client";
 
 import React, { useState } from "react";
-import { Check, Sparkles, Crown, Zap, Shield, HelpCircle, ArrowRight } from "lucide-react";
+import { Check, Crown, ArrowRight } from "lucide-react";
 import { useUser } from "./UserContext";
 import { cn } from "@/lib/utils";
 
 export function PricingSection({ showComparison = true }: { showComparison?: boolean }) {
-  const { openWaitlistModal, isPro, setIsPro } = useUser();
+  const { openWaitlistModal } = useUser();
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("yearly");
 
   const plans = [
     {
       id: "free",
       name: "Free Creator",
-      badge: "Forever Free",
+      badge: "Current Plan",
       price: "$0",
       period: "forever",
-      description: "Essential YouTube tools to brainstorm high-CTR titles and optimize metadata.",
+      yearlyNote: "No credit card required",
+      description: "Essential YouTube tools to brainstorm click-worthy titles and optimize metadata.",
       features: [
         "All 9 Free Creator Tools",
         "10 AI Generations Per Day",
-        "High-CTR Title Generator",
+        "YouTube Title Generator",
         "SEO Description & Tags Generator",
         "HD 1080p Thumbnail Downloader",
-        "Community & Comment Reply AI",
-        "Standard Gemini Flash Speed",
+        "Comment Reply Generator",
+        "Use on Personal & Client Channels",
       ],
       notIncluded: [
-        "Full 8-15 min Video Script Writer",
-        "30-Day Strategic Content Calendar",
-        "Channel Audit & Bottleneck Report",
-        "Competitor Content Gap Matrix",
-        "10-in-1 Viral Shorts Script Pack",
+        "Full Video Script Writer (Pro)",
+        "30-Day Content Calendar (Pro)",
+        "Channel Audit & Growth Plan (Pro)",
+        "Competitor Analysis Assistant (Pro)",
+        "Shorts Script Pack (Pro)",
       ],
-      ctaText: "Get Started Free",
+      ctaText: "Explore Free Tools",
       ctaAction: () => {
         window.location.href = "/tools";
       },
       isPopular: false,
-      isProPlan: false,
     },
     {
       id: "pro",
       name: "Pro Creator",
-      badge: "Most Popular",
+      badge: "Coming Soon",
       price: billingCycle === "yearly" ? "$15" : "$19",
       period: "/ month",
-      yearlyNote: billingCycle === "yearly" ? "Billed $180 annually (Save 20%)" : "Billed monthly",
-      description: "For creators and agencies aiming to scale view counts and build authority.",
+      yearlyNote: billingCycle === "yearly" ? "Billed $180 per year (about 20% off)" : "Billed monthly",
+      description: "For active video creators wanting full scripts, content calendars, and growth plans.",
       features: [
         "Everything in Free, plus:",
-        "Unlimited AI Generations (Zero Daily Cap)",
-        "Full Retention-Engineered Video Scripts",
-        "30-Day Publishing Content Calendars",
-        "In-Depth Channel Audit & Growth Roadmap",
-        "Competitor Gap Analysis & Stealable Hooks",
-        "10-in-1 Viral Shorts Script Packs",
-        "Monetization Readiness & RPM Forecaster",
-        "Priority Gemini Flash Speed with Zero Wait",
+        "High daily limit (fair use)",
+        "Full Video Script Writer",
+        "30-Day Content Calendar Matrix",
+        "Channel Audit & Growth Plan",
+        "Competitor Analysis Assistant",
+        "Shorts Script Pack (10 Scripts)",
+        "Monetization Readiness Checker",
+        "SEO Keyword Research Assistant",
       ],
-      ctaText: isPro ? "Pro Plan Active" : "Unlock Pro Creator",
+      ctaText: "Join Pro Waitlist",
       ctaAction: () => {
         openWaitlistModal("Pro Creator ($19/mo)");
       },
       isPopular: true,
-      isProPlan: true,
     },
     {
       id: "lifetime",
       name: "Founder Lifetime",
-      badge: "Limited to First 100",
+      badge: "Coming Soon",
       price: "$199",
       period: "one-time",
-      yearlyNote: "Pay once, own forever. All future updates.",
-      description: "Never pay a subscription again. Guaranteed access to all future YouTube tools.",
+      yearlyNote: "One-time payment for lifetime access",
+      description: "One-time investment covering the complete creator toolkit and initial Pro suite.",
       features: [
-        "Everything in Pro Creator Forever",
-        "No Recurring Monthly Bills Ever",
-        "VIP Early Access to New Beta Features",
-        "Direct Discord VIP Creator Role",
-        "High-Volume Script Batching",
-        "Priority Feature Request Voting",
-        "Commercial License for Client Work",
+        "Everything in Pro Creator",
+        "One-time payment (no recurring subscription)",
+        "High daily limit (fair use)",
+        "Full access to all 7 Pro creator tools at launch",
+        "Use for Personal & Client Channel projects",
       ],
-      ctaText: "Claim Lifetime Access",
+      ctaText: "Join the waitlist",
       ctaAction: () => {
         openWaitlistModal("Founder Lifetime ($199)");
       },
       isPopular: false,
-      isProPlan: true,
     },
   ];
 
@@ -99,13 +95,13 @@ export function PricingSection({ showComparison = true }: { showComparison?: boo
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center space-x-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-semibold text-violet-300 mb-3">
             <Crown className="w-3.5 h-3.5 text-yellow-400" />
-            <span>Transparent Pricing</span>
+            <span>Pricing & Plans</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-            Level Up Your YouTube Channel
+            Transparent Creator Pricing
           </h2>
           <p className="mt-4 text-base text-gray-400 leading-relaxed">
-            Start free with zero credit card required. Upgrade when you need full video scripts, strategic calendars, and channel audits.
+            All 9 free tools are available today with no login. Pro tools are launching soon.
           </p>
 
           {/* Billing Toggle */}
@@ -115,24 +111,24 @@ export function PricingSection({ showComparison = true }: { showComparison?: boo
               className={cn(
                 "rounded-lg px-4 py-1.5 text-xs sm:text-sm font-medium transition-all",
                 billingCycle === "monthly"
-                  ? "bg-white/10 text-white"
+                  ? "bg-white/10 text-white font-semibold"
                   : "text-gray-400 hover:text-white"
               )}
             >
-              Monthly
+              Monthly ($19/mo)
             </button>
             <button
               onClick={() => setBillingCycle("yearly")}
               className={cn(
                 "flex items-center space-x-1.5 rounded-lg px-4 py-1.5 text-xs sm:text-sm font-medium transition-all",
                 billingCycle === "yearly"
-                  ? "bg-gradient-to-r from-violet-600 to-cyan-500 text-white shadow-glow-sm"
+                  ? "bg-gradient-to-r from-violet-600 to-cyan-500 text-white shadow-glow-sm font-semibold"
                   : "text-gray-400 hover:text-white"
               )}
             >
-              <span>Yearly</span>
+              <span>Yearly ($15/mo)</span>
               <span className="rounded-full bg-cyan-400/20 px-2 py-0.5 text-[10px] font-bold text-cyan-300">
-                Save 20%
+                Save ~20%
               </span>
             </button>
           </div>
@@ -150,67 +146,62 @@ export function PricingSection({ showComparison = true }: { showComparison?: boo
                   : "border-white/10 bg-[#0F0F1A]/80 hover:border-white/20"
               )}
             >
-              {/* Popular Badge */}
-              {plan.isPopular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-glow-sm">
+              {/* Badge */}
+              <div className="flex items-center justify-between">
+                <h3 className="font-heading text-xl font-bold text-white">
+                  {plan.name}
+                </h3>
+                <span
+                  className={cn(
+                    "rounded-full px-2.5 py-0.5 text-xs font-medium",
+                    plan.isPopular
+                      ? "bg-violet-500/20 text-violet-300 border border-violet-500/30"
+                      : "bg-white/5 border border-white/10 text-gray-400"
+                  )}
+                >
                   {plan.badge}
-                </div>
-              )}
+                </span>
+              </div>
 
-              <div>
-                <div className="flex items-center justify-between">
-                  <h3 className="font-heading text-xl font-bold text-white">
-                    {plan.name}
-                  </h3>
-                  {!plan.isPopular && (
-                    <span className="rounded-full bg-white/5 border border-white/10 px-2.5 py-0.5 text-xs font-medium text-gray-400">
-                      {plan.badge}
-                    </span>
-                  )}
-                </div>
+              <p className="mt-2 text-xs text-gray-400 min-h-[36px]">
+                {plan.description}
+              </p>
 
-                <p className="mt-2 text-xs text-gray-400 min-h-[36px]">
-                  {plan.description}
+              {/* Price Display */}
+              <div className="mt-6 flex items-baseline">
+                <span className="font-heading text-4xl sm:text-5xl font-extrabold text-white">
+                  {plan.price}
+                </span>
+                <span className="ml-2 text-sm text-gray-400">
+                  {plan.period}
+                </span>
+              </div>
+              <p className="mt-1 text-[11px] text-cyan-400">{plan.yearlyNote}</p>
+
+              {/* Feature List */}
+              <div className="mt-8 space-y-3">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                  What&apos;s Included:
                 </p>
+                {plan.features.map((feature, i) => (
+                  <div key={i} className="flex items-start space-x-2.5 text-xs sm:text-sm text-gray-200">
+                    <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-400">
+                      <Check className="w-3 h-3" />
+                    </div>
+                    <span>{feature}</span>
+                  </div>
+                ))}
 
-                {/* Price Display */}
-                <div className="mt-6 flex items-baseline">
-                  <span className="font-heading text-4xl sm:text-5xl font-extrabold text-white">
-                    {plan.price}
-                  </span>
-                  <span className="ml-2 text-sm text-gray-400">
-                    {plan.period}
-                  </span>
-                </div>
-                {plan.yearlyNote && (
-                  <p className="mt-1 text-[11px] text-cyan-400">{plan.yearlyNote}</p>
-                )}
-
-                {/* Feature List */}
-                <div className="mt-8 space-y-3">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-                    What&apos;s Included:
-                  </p>
-                  {plan.features.map((feature, i) => (
-                    <div key={i} className="flex items-start space-x-2.5 text-xs sm:text-sm text-gray-200">
-                      <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-400">
-                        <Check className="w-3 h-3" />
+                {plan.notIncluded && plan.notIncluded.length > 0 && (
+                  <div className="pt-2 space-y-2 border-t border-white/5">
+                    {plan.notIncluded.map((item, i) => (
+                      <div key={i} className="flex items-center space-x-2 text-xs text-gray-500">
+                        <span className="h-1.5 w-1.5 rounded-full bg-gray-600" />
+                        <span className="line-through">{item}</span>
                       </div>
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-
-                  {plan.notIncluded && plan.notIncluded.length > 0 && (
-                    <div className="pt-2 space-y-2 border-t border-white/5">
-                      {plan.notIncluded.map((item, i) => (
-                        <div key={i} className="flex items-center space-x-2 text-xs text-gray-500">
-                          <span className="h-1.5 w-1.5 rounded-full bg-gray-600" />
-                          <span className="line-through">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Action Button */}
@@ -245,22 +236,22 @@ export function PricingSection({ showComparison = true }: { showComparison?: boo
                   <tr>
                     <th className="py-4 px-6">Feature</th>
                     <th className="py-4 px-4 text-center">Free Tier</th>
-                    <th className="py-4 px-4 text-center text-cyan-400">Pro Creator</th>
-                    <th className="py-4 px-4 text-center text-violet-400">Founder Lifetime</th>
+                    <th className="py-4 px-4 text-center text-cyan-400">Pro Creator (Soon)</th>
+                    <th className="py-4 px-4 text-center text-violet-400">Founder Lifetime (Soon)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   {[
-                    { feature: "AI Title, Tag & Hashtag Tools", free: "Yes (10/day)", pro: "Unlimited", life: "Unlimited" },
-                    { feature: "Full 8-15 Min Video Script Writer", free: "Preview only", pro: "Yes (Unlimited)", life: "Yes (Unlimited)" },
-                    { feature: "30-Day Content Calendar Matrix", free: "Preview only", pro: "Yes (Unlimited)", life: "Yes (Unlimited)" },
-                    { feature: "Channel Audit & 90-Day Roadmap", free: "Preview only", pro: "Yes", life: "Yes" },
-                    { feature: "Competitor Content Gap Matrix", free: "Preview only", pro: "Yes", life: "Yes" },
-                    { feature: "10-in-1 Viral Shorts Script Pack", free: "Preview only", pro: "Yes", life: "Yes" },
+                    { feature: "AI Title, Tag & Description Tools", free: "Yes (10/day)", pro: "High daily limit (fair use)", life: "High daily limit (fair use)" },
+                    { feature: "Full Video Script Writer", free: "Sample preview", pro: "Full generation", life: "Full generation" },
+                    { feature: "30-Day Content Calendar Matrix", free: "Sample preview", pro: "Full generation", life: "Full generation" },
+                    { feature: "Channel Audit & Growth Plan", free: "Sample preview", pro: "Full generation", life: "Full generation" },
+                    { feature: "Competitor Analysis Assistant", free: "Sample preview", pro: "Full generation", life: "Full generation" },
+                    { feature: "10-in-1 Shorts Script Pack", free: "Sample preview", pro: "Full generation", life: "Full generation" },
                     { feature: "HD 1080p Thumbnail Downloader", free: "Yes (Unlimited)", pro: "Yes (Unlimited)", life: "Yes (Unlimited)" },
-                    { feature: "AI Model Used", free: "Gemini 2.5 Flash", pro: "Gemini 2.5 Flash", life: "Gemini 2.5 Flash VIP" },
-                    { feature: "Daily Generation Limit", free: "10 per day", pro: "Unlimited", life: "Unlimited" },
-                    { feature: "Commercial Rights for Client Work", free: "No", pro: "Yes", life: "Yes" },
+                    { feature: "AI Engine", free: "Google Gemini", pro: "Google Gemini", life: "Google Gemini" },
+                    { feature: "Daily Free AI Generations", free: "10 per day", pro: "High daily limit (fair use)", life: "High daily limit (fair use)" },
+                    { feature: "Use on Your Own & Client Channels", free: "Yes", pro: "Yes", life: "Yes" },
                   ].map((row, idx) => (
                     <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
                       <td className="py-3.5 px-6 font-medium text-white">{row.feature}</td>

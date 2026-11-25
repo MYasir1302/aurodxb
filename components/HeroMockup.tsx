@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Copy, Check, Play, Zap, ArrowRight } from "lucide-react";
+import { Sparkles, Copy, Check } from "lucide-react";
 
 export function HeroMockup() {
   const [activeTab, setActiveTab] = useState<"titles" | "script" | "thumb">("titles");
@@ -10,12 +10,12 @@ export function HeroMockup() {
 
   const mockData = {
     titles: [
-      "I Built a Full-Stack AI App in 48 Hours (Here's What Happened)",
-      "Stop Learning Python in 2025: Do This Instead",
-      "Why 95% of Micro-SaaS Founders Fail (And the 5% Who Win)",
+      "How to Build a Clean Web Application from Scratch",
+      "Stop Learning Python the Old Way: Do This Instead",
+      "The Essential Setup for Beginner Video Creators",
     ],
-    script: `SPEAKER [0:00]: "Most developers think you need 6 months and $10,000 to launch a software product. Today, I'm going to prove that you can build, deploy, and get your first paying user before Sunday evening..."`,
-    thumb: ["$0 TO $5,000", "I QUIT?", "THE SECRET"],
+    script: `SPEAKER [0:00]: "If you spend hours editing a ten-minute video, the bottleneck usually is not your software. It is your project organization before you make the first cut. Here is a simple four-step workflow to streamline your timeline."`,
+    thumb: ["QUICK FIX", "AVOID THIS", "THE SECRET"],
   };
 
   const handleCopy = () => {
@@ -43,7 +43,10 @@ export function HeroMockup() {
             <div className="h-3 w-3 rounded-full bg-amber-500/80" />
             <div className="h-3 w-3 rounded-full bg-emerald-500/80" />
             <span className="ml-2 text-xs font-mono text-gray-400">
-              aurodxb.com/ai-engine
+              aurodxb.com
+            </span>
+            <span className="ml-2 rounded bg-white/10 px-2 py-0.5 text-[10px] font-medium text-gray-300">
+              Example output
             </span>
           </div>
 
@@ -56,7 +59,7 @@ export function HeroMockup() {
                   : "text-gray-400 hover:text-white"
               }`}
             >
-              Titles (10x CTR)
+              Titles
             </button>
             <button
               onClick={() => setActiveTab("script")}
@@ -86,12 +89,11 @@ export function HeroMockup() {
           <div className="flex items-center space-x-3 text-sm text-gray-300">
             <Sparkles className="w-4 h-4 text-cyan-400 shrink-0" />
             <span className="truncate">
-              Topic: <strong className="text-white">How I Built a Profitable AI SaaS in 48h</strong>
+              Topic: <strong className="text-white">How to edit YouTube videos faster</strong>
             </span>
           </div>
-          <span className="hidden sm:inline-flex items-center space-x-1 rounded-md bg-cyan-500/10 px-2 py-0.5 text-[11px] font-semibold text-cyan-300">
-            <Zap className="w-3 h-3 text-cyan-400" />
-            <span>0.8s generation</span>
+          <span className="inline-flex items-center rounded-md bg-white/10 px-2.5 py-0.5 text-[11px] font-medium text-gray-300">
+            Preview
           </span>
         </div>
 
@@ -110,8 +112,8 @@ export function HeroMockup() {
                     </span>
                     <span className="truncate font-medium">{title}</span>
                   </div>
-                  <span className="hidden sm:inline-block shrink-0 rounded bg-emerald-500/10 px-2 py-0.5 text-[11px] font-semibold text-emerald-400">
-                    High CTR
+                  <span className="hidden sm:inline-block shrink-0 rounded bg-cyan-500/10 px-2 py-0.5 text-[11px] font-semibold text-cyan-300">
+                    Title idea
                   </span>
                 </div>
               ))}
@@ -121,14 +123,14 @@ export function HeroMockup() {
           {activeTab === "script" && (
             <div className="space-y-3 text-xs sm:text-sm text-gray-300 leading-relaxed">
               <div className="flex items-center space-x-2 text-violet-400 font-mono text-xs">
-                <span>[0:00 - 0:15 INTRO RETENTION HOOK]</span>
+                <span>[0:00 - 0:20 INTRO HOOK]</span>
               </div>
               <p className="italic bg-white/[0.02] p-3 rounded-lg border border-white/5">
                 {mockData.script}
               </p>
               <div className="text-[11px] text-gray-400 flex items-center space-x-1">
                 <Check className="w-3 h-3 text-cyan-400" />
-                <span>Paced with dopamine reset at 0:45 mark</span>
+                <span>Paced with clear visual cue and transition</span>
               </div>
             </div>
           )}
@@ -143,7 +145,7 @@ export function HeroMockup() {
                   <span className="font-heading font-black tracking-wider text-base sm:text-lg text-cyan-300">
                     {text}
                   </span>
-                  <span className="text-[10px] text-gray-400 mt-1">High Contrast</span>
+                  <span className="text-[10px] text-gray-400 mt-1">Short overlay</span>
                 </div>
               ))}
             </div>
@@ -153,8 +155,8 @@ export function HeroMockup() {
         {/* Footer info strip */}
         <div className="mt-4 flex items-center justify-between text-xs text-gray-400 pt-2">
           <div className="flex items-center space-x-2">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>AI Ready for All YouTube Categories</span>
+            <span className="h-2 w-2 rounded-full bg-cyan-400" />
+            <span>Example output format</span>
           </div>
           <button
             onClick={handleCopy}

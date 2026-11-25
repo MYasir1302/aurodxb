@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ChevronRight, Sparkles, ArrowLeft } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { TOOLS, getToolBySlug } from "@/lib/tools-data";
 import { ToolLayout } from "@/components/ToolLayout";
 import { ToolCard } from "@/components/ToolCard";
@@ -25,22 +25,36 @@ export async function generateMetadata({
 
   if (!tool) {
     return {
-      title: "Tool Not Found | AuroDxb",
+      title: "Tool Not Found",
     };
   }
 
+  const pageUrl = `https://www.aurodxb.com/tools/${tool.slug}`;
+
   return {
-    title: `${tool.name} | AuroDxb`,
+    title: tool.name,
     description: tool.description,
+    alternates: {
+      canonical: pageUrl,
+    },
     openGraph: {
-      title: `${tool.name} | AI YouTube Tool - AuroDxb`,
+      title: `${tool.name} | AuroDxb`,
       description: tool.description,
-      url: `https://aurodxb.com/tools/${tool.slug}`,
+      url: pageUrl,
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: `${tool.name} - AuroDxb`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${tool.name} | AuroDxb`,
       description: tool.description,
+      images: ["/og-image.png"],
     },
   };
 }
@@ -58,8 +72,27 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
     (t) => t.slug !== tool.slug && (t.category === tool.category || !t.isPro)
   ).slice(0, 3);
 
+  const softwareJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: tool.name,
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    description: tool.description,
+    url: `https://www.aurodxb.com/tools/${tool.slug}`,
+  };
+
   return (
     <div className="py-8 sm:py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <nav className="flex items-center space-x-2 text-xs text-gray-400 mb-8">
@@ -86,7 +119,7 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
                   More Tools You Might Like
                 </h3>
                 <p className="text-xs text-gray-400 mt-1">
-                  Explore other AI utilities tailored for YouTube channel growth.
+                  Explore other utilities tailored for YouTube channel growth.
                 </p>
               </div>
               <Link

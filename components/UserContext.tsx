@@ -3,15 +3,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface UserContextType {
-  isPro: boolean;
-  togglePro: () => void;
-  setIsPro: (value: boolean) => void;
-  dailyUsage: number;
-  maxFreeDaily: number;
-  incrementUsage: () => boolean; // returns false if exceeded limit
-  isUpgradeModalOpen: boolean;
-  openUpgradeModal: () => void;
-  closeUpgradeModal: () => void;
+  remainingDaily: number;
+  setRemainingDaily: (count: number) => void;
   isWaitlistModalOpen: boolean;
   waitlistPlan: string;
   openWaitlistModal: (plan?: string) => void;
@@ -20,95 +13,43 @@ interface UserContextType {
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-const MAX_FREE_DAILY = 10;
-
 export function UserProvider({ children }: { children: React.ReactNode }) {
-  const [isPro, setIsProState] = useState<boolean>(false);
-  const [dailyUsage, setDailyUsage] = useState<number>(0);
-  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
+  const [remainingDaily, setRemainingDaily] = useState<number>(10);
   const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
-  const [waitlistPlan, setWaitlistPlan] = useState("Pro Monthly");
-  const [hydrated, setHydrated] = useState(false);
+  const [waitlistPlan, setWaitlistPlan] = useState("Pro Creator");
 
+  // Fetch true server-side daily generation limit on initial page mount
   useEffect(() => {
-    try {
-      const storedPro = localStorage.getItem("aurodxb_is_pro");
-      if (storedPro === "true") {
-        setIsProState(true);
+    async function fetchServerLimit() {
+      try {
+        const res = await fetch("/api/gemini");
+        if (res.ok) {
+          const data = await res.json();
+          if (typeof data.remainingDaily === "number") {
+            setRemainingDaily(data.remainingDaily);
+          }
+        }
+      } catch {
+        // Fallback default is 10
       }
-
-      // Check daily usage by date
-      const today = new Date().toISOString().slice(0, 10);
-      const storedUsageDate = localStorage.getItem("aurodxb_usage_date");
-      const storedUsageCount = localStorage.getItem("aurodxb_usage_count");
-
-      if (storedUsageDate === today && storedUsageCount) {
-        setDailyUsage(parseInt(storedUsageCount, 10) || 0);
-      } else {
-        localStorage.setItem("aurodxb_usage_date", today);
-        localStorage.setItem("aurodxb_usage_count", "0");
-        setDailyUsage(0);
-      }
-    } catch {
-      // Ignore storage errors
     }
-    setHydrated(true);
+    fetchServerLimit();
   }, []);
 
-  const setIsPro = (value: boolean) => {
-    setIsProState(value);
-    try {
-      localStorage.setItem("aurodxb_is_pro", value ? "true" : "false");
-    } catch {
-      // ignore
-    }
-  };
-
-  const togglePro = () => {
-    setIsPro(!isPro);
-  };
-
-  const incrementUsage = (): boolean => {
-    if (isPro) return true; // Pro users have unlimited access
-
-    const today = new Date().toISOString().slice(0, 10);
-    const newCount = dailyUsage + 1;
-
-    if (newCount > MAX_FREE_DAILY) {
-      return false; // Limit exceeded
-    }
-
-    setDailyUsage(newCount);
-    try {
-      localStorage.setItem("aurodxb_usage_date", today);
-      localStorage.setItem("aurodxb_usage_count", newCount.toString());
-    } catch {
-      // ignore
-    }
-    return true;
-  };
-
-  const openUpgradeModal = () => setIsUpgradeModalOpen(true);
-  const closeUpgradeModal = () => setIsUpgradeModalOpen(false);
-
-  const openWaitlistModal = (plan = "Pro Monthly") => {
+  const openWaitlistModal = (plan = "Pro Creator") => {
     setWaitlistPlan(plan);
     setIsWaitlistModalOpen(true);
   };
-  const closeWaitlistModal = () => setIsWaitlistModalOpen(false);
+
+  const closeWaitlistModal = () => {
+    setIsWaitlistModalOpen(false);
+  };
 
   return (
     <UserContext.Provider
       value={{
-        isPro,
-        togglePro,
-        setIsPro,
-        dailyUsage,
-        maxFreeDaily: MAX_FREE_DAILY,
-        incrementUsage,
-        isUpgradeModalOpen,
-        openUpgradeModal,
-        closeUpgradeModal,
+        remainingDaily,
+        setRemainingDaily,
         isWaitlistModalOpen,
         waitlistPlan,
         openWaitlistModal,

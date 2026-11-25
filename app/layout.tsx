@@ -4,7 +4,6 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { UserProvider } from "@/components/UserContext";
-import { UpgradeModal } from "@/components/UpgradeModal";
 import { WaitlistModal } from "@/components/WaitlistModal";
 
 const inter = Inter({
@@ -20,33 +19,34 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aurodxb.com"),
+  metadataBase: new URL("https://www.aurodxb.com"),
   title: {
     default: "AuroDxb | AI-Powered YouTube Tools for Creators",
     template: "%s | AuroDxb",
   },
   description:
-    "Grow your YouTube channel with high-CTR titles, SEO descriptions, viral tags, 1080p thumbnail downloads, and full retention-engineered video scripts powered by AI.",
+    "Free AI tools for YouTube creators. Generate click-worthy titles, SEO descriptions, tags, and download 1080p thumbnails with zero login required.",
   keywords: [
     "YouTube AI tools",
     "YouTube Title Generator",
-    "YouTube Script Writer",
-    "YouTube SEO",
+    "YouTube SEO Tags",
     "Thumbnail Downloader",
-    "YouTube Shorts Script",
-    "Channel Audit",
+    "Video Description Generator",
     "AuroDxb",
   ],
-  authors: [{ name: "AuroDxb Team", url: "https://aurodxb.com" }],
+  authors: [{ name: "AuroDxb Team", url: "https://www.aurodxb.com" }],
   creator: "AuroDxb",
   publisher: "AuroDxb",
+  alternates: {
+    canonical: "https://www.aurodxb.com",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aurodxb.com",
+    url: "https://www.aurodxb.com",
     title: "AuroDxb | AI-Powered YouTube Tools for Creators",
     description:
-      "Grow your YouTube channel with high-CTR titles, viral tags, SEO descriptions, and full retention video scripts.",
+      "Free AI tools for YouTube creators. Generate click-worthy titles, SEO descriptions, tags, and download 1080p thumbnails.",
     siteName: "AuroDxb",
     images: [
       {
@@ -61,9 +61,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AuroDxb | AI-Powered YouTube Tools for Creators",
     description:
-      "High-CTR titles, SEO descriptions, thumbnail extraction, and full YouTube scripts.",
+      "Free AI tools for YouTube creators. Titles, SEO descriptions, tags, and 1080p thumbnails.",
     images: ["/og-image.png"],
-    creator: "@aurodxb",
   },
   robots: {
     index: true,
@@ -83,30 +82,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "AuroDxb",
-    applicationCategory: "MultimediaApplication",
-    operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-    description:
-      "Comprehensive AI toolkit for YouTube creators including title generator, script writer, tags optimizer, and thumbnail downloader.",
-    url: "https://aurodxb.com",
-  };
-
   return (
     <html lang="en" className="dark">
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-[#07070D] text-gray-100 min-h-screen flex flex-col`}
       >
@@ -114,7 +91,6 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
-          <UpgradeModal />
           <WaitlistModal />
         </UserProvider>
       </body>

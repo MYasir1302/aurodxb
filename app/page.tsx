@@ -7,14 +7,11 @@ import {
   Crown,
   ArrowRight,
   Zap,
-  Play,
-  TrendingUp,
-  ShieldCheck,
-  CheckCircle,
-  Star,
-  Users,
   Compass,
   FileCheck,
+  MessageSquare,
+  ShieldCheck,
+  CheckCircle2,
 } from "lucide-react";
 import { TOOLS } from "@/lib/tools-data";
 import { ToolCard } from "@/components/ToolCard";
@@ -24,65 +21,71 @@ import { FaqSection } from "@/components/FaqSection";
 import { useUser } from "@/components/UserContext";
 
 export default function HomePage() {
-  const { openUpgradeModal } = useUser();
+  const { openWaitlistModal } = useUser();
 
   const freeTools = TOOLS.filter((t) => !t.isPro);
   const proTools = TOOLS.filter((t) => t.isPro);
 
-  const stats = [
-    { label: "AI Generations Crafted", value: "75,000+" },
-    { label: "Dedicated YouTube Tools", value: "16 Specialized" },
-    { label: "Average CTR Lift Reported", value: "+38%" },
-    { label: "Creator Community Rating", value: "4.9 / 5.0" },
+  const truthfulFacts = [
+    { title: "9 Free Tools", desc: "Title, description, tags, hashtags, and 1080p thumbnail downloader" },
+    { title: "7 Pro Tools Coming Soon", desc: "Full scripts, content calendar, and channel growth audit" },
+    { title: "No Signup for Free Tools", desc: "Generate up to 10 assets daily with zero account creation" },
   ];
 
   const steps = [
     {
       step: "01",
-      title: "Pick Your Weapon",
-      desc: "Select from 16 specialized creator tools: title ideation, SEO descriptions, high-retention scripts, or competitor audits.",
+      title: "Choose a Tool",
+      desc: "Select any of our 9 free creator utilities for titles, SEO descriptions, tags, ideas, or HD thumbnails.",
       icon: Compass,
     },
     {
       step: "02",
-      title: "Feed Your Topic & Style",
-      desc: "Type your raw premise, keywords, or competitor link. Gemini 2.5 Flash analyzes YouTube algorithm trends in under a second.",
+      title: "Enter Your Video Topic",
+      desc: "Provide your topic, style preference, or target keywords. Google Gemini formats your metadata using proven YouTube best practices.",
       icon: Zap,
     },
     {
       step: "03",
-      title: "Copy, Paste & Publish",
-      desc: "Get polished, high-CTR titles, timestamps, and full scripts. One-click copy or download directly to your workflow.",
+      title: "Copy & Apply",
+      desc: "Receive clean, copy-ready titles, timestamps, and tags. Copy directly into your YouTube upload workflow.",
       icon: FileCheck,
     },
   ];
 
-  const testimonials = [
-    {
-      quote:
-        "The Title Generator and Shorts Script Pack helped me go from 1,200 views to over 48,000 views on my very next upload. The hook pacing tips are pure gold.",
-      author: "Marcus Vance",
-      channel: "DevPulse (142K Subs)",
-      rating: 5,
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "AuroDxb",
+    url: "https://www.aurodxb.com",
+    logo: "https://www.aurodxb.com/icon.svg",
+    description: "AI-powered YouTube creator utilities for titles, SEO descriptions, tags, and thumbnails.",
+  };
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "AuroDxb",
+    url: "https://www.aurodxb.com",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://www.aurodxb.com/tools?q={search_term_string}",
+      "query-input": "required name=search_term_string",
     },
-    {
-      quote:
-        "Being able to extract 1080p thumbnails instantly without ad spam or signups already saved our agency hours every week. Pro scripts are unmatched.",
-      author: "Elena Rostova",
-      channel: "ContentLab Media",
-      rating: 5,
-    },
-    {
-      quote:
-        "Generic ChatGPT gives fluffy intros that ruin retention. AuroDxb's script structure got our average view duration from 28% to 47%.",
-      author: "David Chen",
-      channel: "Finance Decoded (89K Subs)",
-      rating: 5,
-    },
-  ];
+  };
 
   return (
     <div className="relative overflow-hidden">
+      {/* Structured Data (E5) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+
       {/* Background Hero Radial Glow and faint grid */}
       <div className="pointer-events-none absolute inset-0 bg-radial-gradient-hero" />
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-40" />
@@ -93,7 +96,7 @@ export default function HomePage() {
           {/* Top Pill */}
           <div className="inline-flex items-center space-x-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3.5 py-1.5 text-xs font-semibold text-violet-300 shadow-glow-sm mb-6">
             <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Next-Gen Creator Suite • Powered by Gemini Flash</span>
+            <span>YouTube Creator Toolkit • Powered by Google Gemini</span>
           </div>
 
           {/* Big Gradient Headline */}
@@ -106,7 +109,7 @@ export default function HomePage() {
 
           {/* Subheading */}
           <p className="mt-6 text-base sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Stop guessing what the algorithm wants. Generate click-worthy titles, SEO descriptions, viral tags, full retention-engineered scripts, and 30-day content calendars in seconds.
+            Generates titles and metadata using Google Gemini, tuned with proven YouTube best practices. Fast, structured, and free to start.
           </p>
 
           {/* CTAs */}
@@ -121,11 +124,11 @@ export default function HomePage() {
             </Link>
 
             <button
-              onClick={openUpgradeModal}
+              onClick={() => openWaitlistModal("Pro Creator")}
               className="w-full sm:w-auto flex items-center justify-center space-x-2 rounded-xl border border-white/10 bg-white/5 py-3.5 px-7 font-semibold text-gray-200 hover:bg-white/10 hover:text-white transition-all"
             >
               <Crown className="w-4 h-4 text-yellow-400" />
-              <span>Unlock Pro Suite</span>
+              <span>Unlock Pro Suite (Waitlist)</span>
             </button>
           </div>
 
@@ -134,17 +137,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* STATS STRIP */}
+      {/* TRUTHFUL FACTS STRIP (C1) */}
       <section className="relative border-y border-white/10 bg-[#0F0F1A]/60 py-10 backdrop-blur-md">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4 text-center">
-            {stats.map((stat, i) => (
-              <div key={i} className="space-y-1">
-                <div className="font-heading text-2xl sm:text-4xl font-extrabold text-white">
-                  {stat.value}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            {truthfulFacts.map((fact, i) => (
+              <div key={i} className="space-y-1 p-2">
+                <div className="font-heading text-xl sm:text-2xl font-bold text-white flex items-center justify-center space-x-2">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0" />
+                  <span>{fact.title}</span>
                 </div>
-                <div className="text-xs sm:text-sm text-gray-400 font-medium">
-                  {stat.label}
+                <div className="text-xs sm:text-sm text-gray-400">
+                  {fact.desc}
                 </div>
               </div>
             ))}
@@ -159,13 +163,13 @@ export default function HomePage() {
             <div>
               <div className="inline-flex items-center space-x-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-300 mb-3">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>100% Free • No Signup Required</span>
+                <span>9 Free Creator Tools • No Login</span>
               </div>
               <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight">
                 Essential Free Tools
               </h2>
               <p className="mt-2 text-sm text-gray-400 max-w-xl">
-                Daily utilities for instant title inspiration, description writing, tag extraction, and HD thumbnail downloads.
+                Immediate utilities for title ideation, SEO descriptions, tags, and HD thumbnail extraction.
               </p>
             </div>
 
@@ -193,22 +197,22 @@ export default function HomePage() {
             <div>
               <div className="inline-flex items-center space-x-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-semibold text-violet-300 mb-3">
                 <Crown className="w-3.5 h-3.5 text-yellow-400" />
-                <span>Pro Creator Suite</span>
+                <span>7 Pro Tools (Coming Soon)</span>
               </div>
               <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                Deep Growth & Automation Tools
+                Upcoming Pro Features
               </h2>
               <p className="mt-2 text-sm text-gray-400 max-w-xl">
-                High-leverage strategic tools to script 15-minute retention deep-dives, schedule 30 days of uploads, and audit channel bottlenecks.
+                Explore sample outputs for our upcoming scriptwriters, 30-day content calendar, and channel audit tools.
               </p>
             </div>
 
             <button
-              onClick={openUpgradeModal}
+              onClick={() => openWaitlistModal("Pro Suite")}
               className="inline-flex items-center space-x-2 rounded-xl bg-violet-600 px-4 py-2 text-xs font-semibold text-white shadow-glow-sm hover:bg-violet-500 transition-all self-start md:self-auto"
             >
               <Crown className="w-3.5 h-3.5 text-yellow-300" />
-              <span>Unlock All Pro Tools</span>
+              <span>Join Pro Waitlist</span>
             </button>
           </div>
 
@@ -220,18 +224,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* HOW IT WORKS IN 3 STEPS */}
+      {/* HOW IT WORKS IN 3 STEPS (C2) */}
       <section id="how-it-works" className="py-24 relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
-              Frictionless Process
+              Simple Workflow
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight mt-2">
-              How AuroDxb Works in 3 Simple Steps
+              How AuroDxb Works in 3 Steps
             </h2>
             <p className="mt-3 text-sm text-gray-400">
-              No complicated prompt engineering required. Every tool is tuned specifically for the YouTube algorithm.
+              No prompt writing needed. Every tool produces structured, copy-ready metadata.
             </p>
           </div>
 
@@ -264,47 +268,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS PLACEHOLDER */}
+      {/* BE ONE OF OUR FIRST CREATORS (C1 Replaces Fake Testimonials) */}
       <section className="py-20 relative bg-[#0B0B14]/60 border-y border-white/5">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-semibold uppercase tracking-wider text-violet-400">
-              Creator Feedback
-            </span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight mt-2">
-              Loved by YouTubers Worldwide
-            </h2>
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center space-x-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-semibold text-violet-300 mb-3">
+            <MessageSquare className="w-3.5 h-3.5" />
+            <span>Community Feedback</span>
           </div>
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Be One of Our First Creators
+          </h2>
+          <p className="mt-4 text-base text-gray-300 max-w-xl mx-auto leading-relaxed">
+            We are actively building and refining AuroDxb. Try the 9 free tools, test our outputs on your channel, and let us know what features you want next.
+          </p>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <div
-                key={i}
-                className="rounded-2xl border border-white/10 bg-[#0F0F1A] p-6 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center space-x-1 mb-4 text-amber-400">
-                    {Array.from({ length: t.rating }).map((_, idx) => (
-                      <Star key={idx} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                  <p className="text-sm text-gray-300 leading-relaxed italic mb-6">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-white/5 flex items-center justify-between">
-                  <div>
-                    <h4 className="font-heading text-sm font-bold text-white">
-                      {t.author}
-                    </h4>
-                    <p className="text-xs text-gray-400">{t.channel}</p>
-                  </div>
-                  <div className="h-8 w-8 rounded-full bg-violet-600/20 text-cyan-400 flex items-center justify-center font-bold text-xs">
-                    YT
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/tools"
+              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 rounded-xl bg-white/10 px-6 py-3 font-semibold text-white hover:bg-white/20 transition-all text-sm"
+            >
+              <span>Explore Free Tools</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/contact"
+              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 rounded-xl border border-white/10 bg-transparent px-6 py-3 font-semibold text-gray-300 hover:text-white hover:border-white/20 transition-all text-sm"
+            >
+              <MessageSquare className="w-4 h-4 text-cyan-400" />
+              <span>Share Creator Feedback</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -321,10 +313,10 @@ export default function HomePage() {
           <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-r from-violet-900/40 via-purple-900/20 to-cyan-900/40 p-8 text-center backdrop-blur-xl sm:p-12 shadow-2xl">
             <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-48 w-80 rounded-full bg-violet-600/30 blur-3xl" />
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Ready to Explode Your Views?
+              Ready to Optimize Your YouTube Content?
             </h2>
             <p className="mt-3 text-sm sm:text-base text-gray-300 max-w-xl mx-auto">
-              Start generating high-converting titles, descriptions, and script hooks right now. Free forever.
+              Start generating titles, descriptions, tags, and thumbnails right now. 9 tools completely free.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
